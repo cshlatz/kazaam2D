@@ -16,7 +16,7 @@ namespace Kazaam.Assets {
 
     public object LoadContent(string type, string name) {
       var loader = loaders[type];
-      return loader.Load(Game, "res/" + type + "/" + name);
+      return loader.Load(Game, name);
     }
 
     public void RegisterType(string key, IContentLoader loader) {

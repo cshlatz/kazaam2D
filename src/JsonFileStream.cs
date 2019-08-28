@@ -7,7 +7,7 @@ namespace Kazaam.Assets {
   /// </summary>
   public class JsonFileStream : IAssetStreamProvider {
     public Stream GetStream(string type, string name) {
-      var file = new FileStream("res/" + type + "/" + name, FileMode.Open, FileAccess.Read);
+      var file = new FileStream(name, FileMode.Open, FileAccess.Read);
       return file;
     }
   }
