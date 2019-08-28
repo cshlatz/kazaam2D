@@ -1,0 +1,10 @@
+namespace Kazaam.Animate {}
+namespace Kazaam.Assets {}
+namespace Kazaam.Display {}
+namespace Kazaam.Enums {}
+namespace Kazaam.Graphics {}
+namespace Kazaam.Input {}
+namespace Kazaam.Objects {}
+namespace Kazaam.Universe {}
+namespace Kazaam.Utilities {}
+namespace Kazaam.View {}
