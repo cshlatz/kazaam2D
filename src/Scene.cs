@@ -66,14 +66,14 @@ namespace Kazaam {
     /// <summary>
     /// Plays a background track, ending any currently active song
     /// </summary>
-    public static void PlayBackgroundTrack(Song song) {
+    public void PlayBackgroundTrack(Song song) {
       MediaPlayer.Play(song);
     }
 
     /// <summary>
     /// Pauses the current background track, with progress saved
     /// </summary>
-    public static void PauseBackgroundTrack() {
+    public void PauseBackgroundTrack() {
       MediaPlayer.Pause();
     }
 

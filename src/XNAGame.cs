@@ -50,8 +50,8 @@ namespace Kazaam {
         // XNB Asset loader
         contentLoader = new ContentLoader(this);
         contentLoader.RegisterType("maps", new MapLoader());
-        contentLoader.RegisterType("sound", new SoundLoader());
-        contentLoader.RegisterType("song", new SongLoader());
+        contentLoader.RegisterType("sounds", new SoundLoader());
+        contentLoader.RegisterType("songs", new SongLoader());
       }
 
       protected void SetResolution(int x, int y) {
