@@ -6,10 +6,10 @@ using Kazaam.View;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 
 using MonoGame.Extended;
-using MonoGame.Extended.ViewportAdapters
-;
+using MonoGame.Extended.ViewportAdapters;
 
 using System.Collections;
 
@@ -62,7 +62,23 @@ namespace Kazaam {
 		public ArrayList SceneObjects() {
 			return _objects;
 		}
+
+    /// <summary>
+    /// Plays a background track, ending any currently active song
+    /// </summary>
+    public static void PlayBackgroundTrack(Song song) {
+      MediaPlayer.Play(song);
+    }
+
+    /// <summary>
+    /// Pauses the current background track, with progress saved
+    /// </summary>
+    public static void PauseBackgroundTrack() {
+      MediaPlayer.Pause();
+    }
+
   }
+
 
 }
 

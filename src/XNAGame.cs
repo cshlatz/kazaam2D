@@ -49,6 +49,7 @@ namespace Kazaam {
         contentLoader = new ContentLoader(this);
         contentLoader.RegisterType("maps", new MapLoader());
         contentLoader.RegisterType("sound", new SoundLoader());
+        contentLoader.RegisterType("song", new SongLoader());
       }
 
       protected void SetResolution(int x, int y) {
