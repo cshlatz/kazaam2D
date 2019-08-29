@@ -93,6 +93,7 @@
     <Compile Include="src\PlayerObject.cs" />
     <Compile Include="src\Scene.cs" />
     <Compile Include="src\SoundLoader.cs" />
+    <Compile Include="src\SongLoader.cs" />
     <Compile Include="src\State.cs" />
     <Compile Include="src\Tags.cs" />
     <Compile Include="src\XNAGame.cs" />

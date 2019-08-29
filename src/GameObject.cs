@@ -4,6 +4,7 @@ using Kazaam.Universe;
 using Humper;
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace Kazaam.Objects {
 		public Texture2D Texture { get; set; }
     public Animation CurrentAnimation { get; set; }
     public Dictionary<string, Animation>  animations;
+    public Dictionary<string, SoundEffect> sounds;
     public SpriteEffects effects;
 
     public ObjectState state;
@@ -33,6 +35,7 @@ namespace Kazaam.Objects {
 			this.Position = position;
 			this.Scale = scale;
       animations = new Dictionary<string, Animation>();
+      sounds  = new Dictionary<string, SoundEffect>();
       hitboxes = new List<Hitbox>();
 		}
 

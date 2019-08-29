@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+
 using System;
 using System.Collections;
 
@@ -48,7 +50,8 @@ namespace Kazaam {
         // XNB Asset loader
         contentLoader = new ContentLoader(this);
         contentLoader.RegisterType("maps", new MapLoader());
-        contentLoader.RegisterType("sound", new SoundLoader());
+        contentLoader.RegisterType("sounds", new SoundLoader());
+        contentLoader.RegisterType("songs", new SongLoader());
       }
 
       protected void SetResolution(int x, int y) {
