@@ -7,6 +7,5 @@ namespace Kazaam.Objects {
   /// </summary>
 	interface IDrawable {
 		void Draw(SpriteBatch sb, Scene scene);
-    void Update(float delta);
 	}
 }

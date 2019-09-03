@@ -19,12 +19,10 @@ namespace Kazaam.Objects {
     public bool GravityEnabled { get; set; } // On by default
     public float GravityAcceleration { get; set; }
     public bool OnGround { get; set; }
-    public bool GroundFlag { get; set; }
 
     public PhysicsObject(Texture2D texture, Vector2 position, float scale) : base (texture, position, scale) {
       // Gravity defaults. Can be changed on a per object basis.
       OnGround = false;
-      GroundFlag = false;
       GravityEnabled = true;
       GravityAcceleration = 10;
     }

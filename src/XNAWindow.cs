@@ -41,11 +41,6 @@ namespace Kazaam.Display
           
         }
 
-        public void Render(GameObject go, Scene scene)
-        {
-					go.Draw(spriteBatch, scene);
-        }
-
         public void Render(Map tw) {
           tw.Draw(spriteBatch);
         }

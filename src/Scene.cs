@@ -1,4 +1,4 @@
-using Humper;
+using HumperWorld = Humper.World;
 
 using Kazaam.Objects;
 using Kazaam.Universe;
@@ -9,6 +9,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
 
 using MonoGame.Extended;
+using MonoGame.Extended.Entities;
+using SceneWorld = MonoGame.Extended.Entities.World;
 using MonoGame.Extended.ViewportAdapters;
 
 using System.Collections;
@@ -19,34 +21,26 @@ namespace Kazaam {
   /// A collection of Kazaam.Universe objects that define a world in the engine.
   /// </summary>
   public class Scene { 
-    public enum Type {
-      Platformer,
-      TopDown,
-      Menu
-    }
-
 		public XNAGame game;
 
-    public Type SceneType;
-
 		// Scene Objects
-		public World world;
+		public HumperWorld hworld;
+    public SceneWorld sworld;
     public Map _map;
     public Camera mainCamera;
+    public GameObjectFactory factory; 
 		public ArrayList _objects = new ArrayList();
 
 		public float Gravity { get; }
     public Vector2 Vec { get; set; }
 
 
-		public Scene(XNAGame game) {
+		public Scene(XNAGame game, SceneWorld world) {
 			this.game = game;
+      this.sworld = world;
 
-      // Setup the tiled world
-			world = new World(120 * 32, 120 * 32);
-
-      // Scene type
-		  SceneType = Type.Platformer;	
+      // Setup the gameobject factory
+      factory = new GameObjectFactory(sworld, this.game.Content);
 
       // World physics
 			Gravity = 9.8f;
@@ -55,8 +49,12 @@ namespace Kazaam {
       mainCamera = new Camera(game);
 		}
 
-    public void SetCameraFocus(PhysicsObject focus) {
+    public void SetCameraFocus(Body focus) {
       mainCamera.CameraFocus = focus;
+    }
+
+    public void CreateObject(Body body) {
+      factory.CreateGameObject(body);
     }
 
 		public ArrayList SceneObjects() {

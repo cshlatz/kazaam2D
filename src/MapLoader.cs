@@ -1,6 +1,6 @@
 using Kazaam.Objects;
 using Kazaam.Universe;
-
+using Microsoft.Xna.Framework;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
 
@@ -50,7 +50,11 @@ namespace Kazaam.Assets
                 switch (tileLayer.Name) {
                   // TODO: Get rid of these hardcoded strings
                   case "Platform":
-			              new PlatformObject(map.tileWidth, map.tileHeight, x * map.tileWidth, y * map.tileHeight, game.scene);
+                    var body = new Body();
+                    body.Dimensions = new Vector2(map.tileWidth, map.tileHeight);
+                    body.Position = new Vector2(map.tileWidth * x, map.tileHeight * y);
+                    body.Bounds.AddTags(Enums.Tags.Platforms);
+                    game.scene.factory.CreateGameObject(body);
                     break;
                 }
               }
