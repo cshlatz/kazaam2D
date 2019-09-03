@@ -21,7 +21,7 @@ namespace Kazaam.View
 		protected Vector2 Position;
     protected float Zoom;
     protected XNAGame game;
-    protected Camera2D InternalCamera;
+    protected OrthographicCamera InternalCamera;
 
     // Platformer Camera limits
     protected float HorizontalFocusLimit;
@@ -30,7 +30,7 @@ namespace Kazaam.View
     public Camera(XNAGame game) {
       this.game = game;
       var viewportAdapter = new BoxingViewportAdapter(game.Window, game.GraphicsDevice, (int)game.Resolution.X, (int)game.Resolution.Y);
-      InternalCamera = new Camera2D(viewportAdapter);
+      InternalCamera = new OrthographicCamera(viewportAdapter);
     }
 
     public void Update(GameTime gameTime) {

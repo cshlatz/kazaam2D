@@ -7,8 +7,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>kazaam</RootNamespace>
     <AssemblyName>kazaam</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <BaseDirectory>kazaam2d</BaseDirectory>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,6 +31,7 @@
     <Folder Include="scene\" />
     <Folder Include="src\Camera\" />
     <Folder Include="src\Animation\" />
+    <Folder Include="src\Systems\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -52,17 +52,26 @@
     <Reference Include="MonoGame.Extended.Content.Pipeline">
       <HintPath>..\packages\MonoGame.Extended.Content.Pipeline.3.6.0-beta0001\lib\netstandard2.0\MonoGame.Extended.Content.Pipeline.dll</HintPath>
     </Reference>
-    <Reference Include="MonoGame.Extended">
-      <HintPath>..\packages\MonoGame.Extended.1.1.0\lib\portable-net45+win8+wpa81\MonoGame.Extended.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Extended.Graphics">
-      <HintPath>..\packages\MonoGame.Extended.Graphics.1.1.0\lib\portable-net45+win8+wpa81\MonoGame.Extended.Graphics.dll</HintPath>
-    </Reference>
     <Reference Include="MonoGame.Framework">
       <HintPath>..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\lib\net45\MonoGame.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="MonoGame.Extended">
+      <HintPath>..\packages\MonoGame.Extended.3.7.0\lib\netstandard2.0\MonoGame.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Extended.Animations">
+      <HintPath>..\packages\MonoGame.Extended.Animations.3.7.0\lib\netstandard2.0\MonoGame.Extended.Animations.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Extended.Entities">
+      <HintPath>..\packages\MonoGame.Extended.Entities.3.7.0\lib\netstandard2.0\MonoGame.Extended.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Extended.Graphics">
+      <HintPath>..\packages\MonoGame.Extended.Graphics.3.7.0\lib\netstandard2.0\MonoGame.Extended.Graphics.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Extended.Particles">
+      <HintPath>..\packages\MonoGame.Extended.Particles.3.7.0\lib\netstandard2.0\MonoGame.Extended.Particles.dll</HintPath>
+    </Reference>
     <Reference Include="MonoGame.Extended.Tiled">
-      <HintPath>..\packages\MonoGame.Extended.Tiled.1.1.0\lib\portable-net45+win8+wpa81\MonoGame.Extended.Tiled.dll</HintPath>
+      <HintPath>..\packages\MonoGame.Extended.Tiled.3.7.0\lib\netstandard2.0\MonoGame.Extended.Tiled.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +110,7 @@
     <Compile Include="src\XNBFileStream.cs" />
     <Compile Include="src\Animation\Animation.cs" />
     <Compile Include="src\Animation\AnimationFrame.cs" />
+    <Compile Include="src\Systems\WorldSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

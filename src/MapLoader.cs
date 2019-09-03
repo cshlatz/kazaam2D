@@ -2,7 +2,7 @@ using Kazaam.Objects;
 using Kazaam.Universe;
 
 using MonoGame.Extended.Tiled;
-using MonoGame.Extended.Tiled.Graphics;
+using MonoGame.Extended.Tiled.Renderers;
 
 namespace Kazaam.Assets
 {
@@ -23,10 +23,9 @@ namespace Kazaam.Assets
     public object Load(XNAGame game, string contentPath) {
       this.game = game;
       tiledMap = game.Content.Load<TiledMap>(contentPath);
-      var mapRenderer = new TiledMapRenderer(game.GraphicsDevice);
       int tileWidth = tiledMap.TileWidth;
       int tileHeight = tiledMap.TileHeight;
-      map = new Map(tiledMap, mapRenderer, tileWidth, tileHeight);
+      map = new Map(tiledMap, tileWidth, tileHeight, game.GraphicsDevice);
       map.scene = game.scene;
       LoadMapContent();
       return map;

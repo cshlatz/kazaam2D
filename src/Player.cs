@@ -42,7 +42,7 @@ namespace Kazaam.Objects {
     /// </summary>
     public void AddPlayerObject(PlayerObject player) {
       playerObject = player;
-      playerObject.AddPhysicsBody(activeScene.world, 128, 128);
+      playerObject.AddPhysicsBody(activeScene.world, 256, 256);
       activeScene._objects.Add(playerObject);
     }
 
