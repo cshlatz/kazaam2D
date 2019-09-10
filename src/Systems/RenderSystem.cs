@@ -27,27 +27,35 @@ namespace Kazaam.View {
       foreach (var entity in ActiveEntities) {
         var body = _bodyMapper.Get(entity);
         var renderComponent = _renderMapper.Get(entity);
-        DrawObject(body, renderComponent.Texture, renderComponent.effects);
+        DrawObject(body, renderComponent);
         if (body.CurrentAnimation != null) {
           body.CurrentAnimation.Update((float)gameTime.ElapsedGameTime.TotalMilliseconds);
         }
       }
     }
 
-    public void DrawObject(Body body, Texture2D texture, SpriteEffects effects) {
+    public void DrawObject(Body body, RenderComponent renderComp) {
       try {
-        SpriteEffects se = SpriteEffects.None;
-        if (effects.Equals(null)) {
-          effects = se;
+        SpriteEffects effects = renderComp.Effects;
+
+        // This is convoluted, but this allows the user to set a default direction that the texture faces
+        // The render component assumes that the texture faces right (X axis increases left to right in the engine)
+        // so operate under that assumption.
+        if (body.facingRight) {
+          effects = effects.HasFlag(SpriteEffects.FlipHorizontally) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+        } else {
+          effects = effects.HasFlag(SpriteEffects.FlipHorizontally) ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
         }
+
         Rectangle sourceRectangle = body.CurrentAnimation.CurrentRectangle;
         var transformMatrix = _game.scene.mainCamera.GetViewMatrix();
         _game.GameWindow.spriteBatch.Begin(transformMatrix : transformMatrix, samplerState: SamplerState.PointClamp);
+
         foreach (Hitbox hb in body.hitboxes) {
           hb.Draw(_game.GameWindow.spriteBatch, _game.scene);
         }
 			  _game.GameWindow.spriteBatch.Draw(
-             texture,
+             renderComp.Texture,
              new Vector2(body.Bounds.X * body.Scale, body.Bounds.Y * body.Scale),
              sourceRectangle,
              Color.White,
