@@ -20,7 +20,7 @@ namespace Kazaam.Display
     {
         private GraphicsDeviceManager graphics;
         private Game game;
-        private SpriteBatch spriteBatch;
+        public SpriteBatch spriteBatch;
         private ArrayList sprites;
 
         public XNAWindow(Game game)
@@ -39,15 +39,6 @@ namespace Kazaam.Display
 
         public void Run() {
           
-        }
-
-        public void Render(GameObject go, Scene scene)
-        {
-					go.Draw(spriteBatch, scene);
-        }
-
-        public void Render(Map tw) {
-          tw.Draw(spriteBatch);
         }
 
         public GraphicsDeviceManager Window() {

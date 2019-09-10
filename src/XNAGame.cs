@@ -2,12 +2,16 @@
 using Kazaam.Display;
 using Kazaam.Objects;
 using Kazaam.Input;
+using Kazaam.Universe;
+using Kazaam.View;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+
+using MonoGame.Extended.Entities;
 
 using System;
 using System.Collections;
@@ -17,10 +21,10 @@ namespace Kazaam {
     /// The main game engine class that handles the game loop, physics updates and rendering.
     /// </summary>
     public class XNAGame : Game {
+      private World _world;
       public Stack states;
       public Vector2 Resolution;
       public Scene scene;
-      public Player player;
       public AssetLoader jsonLoader;
       public ContentLoader contentLoader;
 
@@ -34,12 +38,19 @@ namespace Kazaam {
         GameWindow = new XNAWindow(this);
         SetResolution(1280, 720);
       }
-      
+
       protected override void Initialize() {
-            Console.WriteLine("bar");
         base.Initialize();
+        _world = new WorldBuilder()
+          .AddSystem(new WorldSystem(this))
+          .AddSystem(new PlayerSystem())
+          .AddSystem(new RenderSystem(this))
+          .AddSystem(new DynamicsSystem())
+          .Build();
+
+        Components.Add(_world);
         states = new Stack();
-        scene = new Scene(this);
+        scene = new Scene(this, _world);
 				InputManager.Initialize();
         IsFixedTimeStep = false;
 
@@ -62,22 +73,17 @@ namespace Kazaam {
       }
 
       protected override void Draw(GameTime gameTime) {
-        var state = (IGameState)states.Peek();
-        state.Draw(gameTime);
+        GraphicsDevice.Clear(Color.BlanchedAlmond);
+        _world.Draw(gameTime);
         base.Draw(gameTime);
       }
 
       protected override void Update(GameTime gameTime) {
-			  InputManager.Update(); // Input manager is ALWAYS called
-        var state = (IGameState)states.Peek();
-        state.Update(gameTime);
+        this.scene.mainCamera.Update(gameTime);
+	    InputManager.Update(); // Input manager is ALWAYS called
+        _world.Update(gameTime);
         base.Update(gameTime);
       }
-
-      public void SetPlayer(Player player) {
-        this.player = player;
-      }
-
     }
 
 }

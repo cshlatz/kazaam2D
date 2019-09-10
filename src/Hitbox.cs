@@ -11,13 +11,13 @@ namespace Kazaam.Objects {
   /// </summary>
   public class Hitbox {
     public IBox Bounds;
-    private GameObject gameObject;
+    private Body body;
     private Texture2D hitbox;
     public Vector2 Position; // Position relative to top left corner of gameobject parent
-    public Hitbox(World world, GameObject gameObject, Vector2 position, float width, float height, Tags tag) {
+    public Hitbox(World world, Body body, Vector2 position, float width, float height, Tags tag) {
       Position = position;
-      this.gameObject = gameObject;
-      Bounds = world.Create(gameObject.Position.X + Position.X, gameObject.Position.Y + Position.Y, width, height).AddTags(tag);
+      this.body = body;
+      Bounds = world.Create(body.Position.X + Position.X, body.Position.Y + Position.Y, width, height).AddTags(tag);
     }
 
     public void Draw(SpriteBatch sb, Scene scene) {

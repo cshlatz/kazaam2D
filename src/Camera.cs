@@ -17,7 +17,7 @@ namespace Kazaam.View
   /// A camera that defines the region shown on the window.
   /// </summary>
   public class Camera {
-    public PhysicsObject CameraFocus;
+    public Body CameraFocus;
 		protected Vector2 Position;
     protected float Zoom;
     protected XNAGame game;
