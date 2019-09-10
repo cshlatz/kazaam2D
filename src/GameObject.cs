@@ -11,7 +11,7 @@ namespace Kazaam.Objects {
   /// An object that can be represented on the screen.
   /// </summary>
 	public class GameObject{
-		public void Draw(Body body, SpriteBatch sb, Scene scene) {
+		public void Draw(SpriteBatch sb, Scene scene) {
       try {
         SpriteEffects se = SpriteEffects.None;
         if (body.effects.Equals(null)) {

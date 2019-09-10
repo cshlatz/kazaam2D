@@ -5,18 +5,19 @@ using MonoGame.Extended.Entities;
 using MonoGame.Extended.Entities.Systems;
 using World = Humper.World;
 
-namespace Platformer.Systems
+namespace Kazaam.Universe
 {
-    public class WorldSystem : EntityProcessingSystem
-    {
+    public class WorldSystem : EntityProcessingSystem, IDrawSystem {
         private readonly World _world;
         private ComponentMapper<Transform2> _transformMapper;
         private ComponentMapper<Body> _bodyMapper;
+        private XNAGame _game;
 
-        public WorldSystem()
-            : base(Aspect.All(typeof(Body), typeof(Transform2)))
+        public WorldSystem(XNAGame game)
+            : base(Aspect.All(typeof(Body)))
         {
             _world = new World(120 * 32, 120 * 32);
+            _game = game;
         }
 
         public override void Initialize(IComponentMapperService mapperService)
@@ -36,8 +37,18 @@ namespace Platformer.Systems
             _world.Remove(body.Bounds);
         }
 
+        protected override void OnEntityChanged(int entityId)
+        {
+            base.OnEntityChanged(entityId);
+        }
+
         public override void Process(GameTime gameTime, int entityId) {
           var body = _bodyMapper.Get(entityId);
+        }
+
+        public void Draw(GameTime gameTime)
+        {
+            _game.scene._map.Draw(_game.GameWindow.spriteBatch, _game.scene);
         }
     }
 }

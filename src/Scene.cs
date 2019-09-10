@@ -28,7 +28,7 @@ namespace Kazaam {
     public SceneWorld sworld;
     public Map _map;
     public Camera mainCamera;
-    public GameObjectFactory factory; 
+    public GameObjectFactory Factory { get; set; } 
 		public ArrayList _objects = new ArrayList();
 
 		public float Gravity { get; }
@@ -38,9 +38,8 @@ namespace Kazaam {
 		public Scene(XNAGame game, SceneWorld world) {
 			this.game = game;
       this.sworld = world;
-
-      // Setup the gameobject factory
-      factory = new GameObjectFactory(sworld, this.game.Content);
+      
+      hworld = new HumperWorld(120 * 32, 120 * 32);
 
       // World physics
 			Gravity = 9.8f;
@@ -51,10 +50,6 @@ namespace Kazaam {
 
     public void SetCameraFocus(Body focus) {
       mainCamera.CameraFocus = focus;
-    }
-
-    public void CreateObject(Body body) {
-      factory.CreateGameObject(body);
     }
 
 		public ArrayList SceneObjects() {
@@ -74,8 +69,18 @@ namespace Kazaam {
     public void PauseBackgroundTrack() {
       MediaPlayer.Pause();
     }
+    
+    public void AddEntity(System.Collections.Generic.List<object> list) {
+      var entity = sworld.CreateEntity();
+      foreach (var component in list) {
+        entity.Attach(component);
+      }
+      return;
+    }
+
 
   }
+
 
 
 }

@@ -2,6 +2,8 @@
 using Kazaam.Display;
 using Kazaam.Objects;
 using Kazaam.Input;
+using Kazaam.Universe;
+using Kazaam.View;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -40,7 +42,13 @@ namespace Kazaam {
       protected override void Initialize() {
         base.Initialize();
         _world = new WorldBuilder()
+          .AddSystem(new WorldSystem(this))
+          .AddSystem(new PlayerSystem())
+          .AddSystem(new RenderSystem(this))
+          .AddSystem(new DynamicsSystem())
           .Build();
+
+        Components.Add(_world);
         states = new Stack();
         scene = new Scene(this, _world);
 				InputManager.Initialize();
@@ -65,12 +73,14 @@ namespace Kazaam {
       }
 
       protected override void Draw(GameTime gameTime) {
+        GraphicsDevice.Clear(Color.BlanchedAlmond);
         _world.Draw(gameTime);
         base.Draw(gameTime);
       }
 
       protected override void Update(GameTime gameTime) {
-			  InputManager.Update(); // Input manager is ALWAYS called
+        this.scene.mainCamera.Update(gameTime);
+	    InputManager.Update(); // Input manager is ALWAYS called
         _world.Update(gameTime);
         base.Update(gameTime);
       }

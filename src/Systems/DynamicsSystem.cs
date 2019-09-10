@@ -2,6 +2,7 @@ using Humper;
 using Humper.Responses;
 using Kazaam.Enums;
 using Kazaam.Objects;
+using Kazaam.Universe;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Entities;
 using MonoGame.Extended.Entities.Systems;
@@ -12,22 +13,25 @@ namespace Kazaam.Universe {
   public class DynamicsSystem : EntityProcessingSystem {
 
     private ComponentMapper<Body> _bodyMapper;  
+    private ComponentMapper<PhysicsComponent> _physicsMapper;  
 
-    public DynamicsSystem() : base(Aspect.All(typeof(IDynamic))) {
+    public DynamicsSystem() : base(Aspect.One(typeof(PhysicsComponent))) {
     }
 
     public override void Initialize(IComponentMapperService mapperService) {
       _bodyMapper = mapperService.GetMapper<Body>();
+      _physicsMapper = mapperService.GetMapper<PhysicsComponent>();
     }
 
     public override void Process(GameTime gameTime, int entityId) {
       float delta = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
       var body = _bodyMapper.Get(entityId);
+      var physics = _physicsMapper.Get(entityId);
       body.OnGround = false;
       Vector2 otherPosition;
       delta *= 0.001f;
       if (body.GravityEnabled) {
-        SetVelocityY(body, body.Velocity.Y + body.GravityAcceleration);
+        SetVelocityY(body, body.Velocity.Y + physics.gravityAcceleration);
       }
       Vector2 oldPosition = new Vector2(body.Bounds.X, body.Bounds.Y);
       var result = body.Bounds.Move(body.Bounds.X + (delta * body.Velocity.X), body.Bounds.Y + delta * body.Velocity.Y, (collision) => {
