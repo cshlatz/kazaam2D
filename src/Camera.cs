@@ -34,7 +34,9 @@ namespace Kazaam.View
     }
 
     public void Update(GameTime gameTime) {
-      SetPosition(CameraFocus.Position);
+      // We want the focus to be in the middle of the object
+      var centerOfObject = new Vector2(CameraFocus.Position.X + (CameraFocus.Bounds.Width / 2), CameraFocus.Position.Y + (CameraFocus.Bounds.Height / 2));
+      SetPosition(centerOfObject);
     }
 
     /// <summary>
