@@ -15,10 +15,10 @@ namespace Kazaam {
   /// A collection of Kazaam.Universe objects that define a world in the engine.
   /// </summary>
   public class Scene { 
-		public readonly XNAGame Game;
+    public readonly XNAGame Game;
 
     // Scene structures
-		public HumperWorld HumperWorld {get; set;}
+    public HumperWorld HumperWorld {get; set;}
     public SceneWorld SceneWorld {get; set;}
     public Map Map {get; set;}
 
@@ -27,15 +27,15 @@ namespace Kazaam {
     public Matrix CameraMatrix {get; set;}
     public Body CameraFocus {get; set;}
 
-		public Scene(XNAGame game, SceneWorld world) {
-			this.Game = game;
+    public Scene(XNAGame game, SceneWorld world) {
+      this.Game = game;
       this.SceneWorld = world;
       
       HumperWorld = new HumperWorld(120 * 32, 120 * 32);
 
       // Camera
       SetupCamera();
-		}
+    }
 
     /// <summary>
     /// Plays a background track, ending any currently active song

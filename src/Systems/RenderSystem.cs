@@ -55,7 +55,7 @@ namespace Kazaam.View {
           hb.Draw(_game.GameWindow.spriteBatch, _game.scene);
         }
 
-			  _game.GameWindow.spriteBatch.Draw(
+        _game.GameWindow.spriteBatch.Draw(
              renderComp.Texture,
              new Vector2(body.Bounds.X * body.Scale, body.Bounds.Y * body.Scale),
              sourceRectangle,
@@ -66,7 +66,7 @@ namespace Kazaam.View {
              effects,
              0f
           );
-			  _game.GameWindow.spriteBatch.End();
+        _game.GameWindow.spriteBatch.End();
       } catch (System.NullReferenceException e) {
       }
     }
