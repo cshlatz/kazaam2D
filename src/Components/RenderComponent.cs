@@ -1,3 +1,4 @@
+using Kazaam.Assets;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Kazaam.Objects {
@@ -6,9 +7,9 @@ namespace Kazaam.Objects {
     public SpriteEffects Effects {get; set;}
     public int Scale {get; set;}
 
-    public RenderComponent(Texture2D texture, SpriteEffects effects = SpriteEffects.None, int scale = 1) {
-      Texture = texture;
-      Effects = effects;
+    public RenderComponent(Sprite sprite, bool flip = false, int scale = 1) {
+      Texture = sprite.Texture;
+      Effects = flip ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
       Scale = scale;
     }
   }
