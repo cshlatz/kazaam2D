@@ -23,10 +23,6 @@ namespace Kazaam.View
     protected XNAGame game;
     protected OrthographicCamera InternalCamera;
 
-    // Platformer Camera limits
-    protected float HorizontalFocusLimit;
-    protected float VerticalFocusLimit;
-
     public Camera(XNAGame game) {
       this.game = game;
       var viewportAdapter = new BoxingViewportAdapter(game.Window, game.GraphicsDevice, (int)game.Resolution.X, (int)game.Resolution.Y);

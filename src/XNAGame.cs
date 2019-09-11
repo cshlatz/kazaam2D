@@ -21,7 +21,7 @@ namespace Kazaam {
     /// The main game engine class that handles the game loop, physics updates and rendering.
     /// </summary>
     public class XNAGame : Game {
-      private World _world;
+      protected World _world;
       public Stack states;
       public Vector2 Resolution;
       public Scene scene;
@@ -46,12 +46,13 @@ namespace Kazaam {
           .AddSystem(new PlayerSystem())
           .AddSystem(new RenderSystem(this))
           .AddSystem(new DynamicsSystem())
+          .AddSystem(new CameraSystem(this))
           .Build();
 
         Components.Add(_world);
         states = new Stack();
         scene = new Scene(this, _world);
-				InputManager.Initialize();
+        InputManager.Initialize();
         IsFixedTimeStep = false;
 
         // Json Asset loader
@@ -79,9 +80,8 @@ namespace Kazaam {
       }
 
       protected override void Update(GameTime gameTime) {
-        this.scene.mainCamera.Update(gameTime);
-	    InputManager.Update(); // Input manager is ALWAYS called
         _world.Update(gameTime);
+        InputManager.Update(); // Input manager is ALWAYS called
         base.Update(gameTime);
       }
     }
