@@ -62,7 +62,7 @@ namespace Kazaam.View {
              Color.White,
              0f,
              Vector2.Zero,
-             body.Scale,
+             renderComp.Scale,
              effects,
              0f
           );
