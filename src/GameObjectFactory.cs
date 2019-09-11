@@ -13,7 +13,7 @@ namespace Kazaam.Objects {
     }
 
     public int CreateEntity(List<object> list) {
-      var entity = game.scene.sworld.CreateEntity();
+      var entity = game.scene.SceneWorld.CreateEntity();
             entity.Attach<Body>(new Body());
             foreach (var component in list)
             {
@@ -23,7 +23,7 @@ namespace Kazaam.Objects {
     }
 
     public void Attach(int entityId, object obj) {
-      var entity = game.scene.sworld.GetEntity(entityId);
+      var entity = game.scene.SceneWorld.GetEntity(entityId);
       entity.Attach<object>(obj);
             return;
     }

@@ -12,7 +12,7 @@ namespace Kazaam.Universe
     /// </summary>
     public class Map : Objects.IDrawable
     {
-        private TiledMap map;
+      private TiledMap map;
 
       private TiledMapRenderer mapRenderer;
 

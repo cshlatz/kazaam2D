@@ -53,9 +53,9 @@ namespace Kazaam.Assets
                     var body = new Body();
                     body.Dimensions = new Vector2(map.tileWidth, map.tileHeight);
                     body.Position = new Vector2(map.tileWidth * x, map.tileHeight * y);
-                    body.Bounds = game.scene.hworld.Create(body.Position.X, body.Position.Y, body.Dimensions.X, body.Dimensions.Y);
+                    body.Bounds = game.scene.HumperWorld.Create(body.Position.X, body.Position.Y, body.Dimensions.X, body.Dimensions.Y);
                     body.Bounds.AddTags(Enums.Tags.Platforms);
-                    var entity = game.scene.sworld.CreateEntity();
+                    var entity = game.scene.SceneWorld.CreateEntity();
                     entity.Attach(body);
                     break;
                 }

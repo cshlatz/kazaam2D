@@ -21,7 +21,7 @@ namespace Kazaam.Objects {
     }
 
     public void Draw(SpriteBatch sb, Scene scene) {
-      hitbox = new Texture2D(scene.game.GraphicsDevice, (int)Bounds.Width, (int)Bounds.Height);
+      hitbox = new Texture2D(scene.Game.GraphicsDevice, (int)Bounds.Width, (int)Bounds.Height);
       Color[] data = new Color[hitbox.Width * hitbox.Height];
       for (int i = 0; i < data.Length; i++) {
         data[i] = Color.Red;

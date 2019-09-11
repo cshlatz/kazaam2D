@@ -1,19 +1,13 @@
 using HumperWorld = Humper.World;
-
 using Kazaam.Objects;
 using Kazaam.Universe;
 using Kazaam.View;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
-
-using MonoGame.Extended;
+using Microsoft.Xna.Framework;
 using MonoGame.Extended.Entities;
-using SceneWorld = MonoGame.Extended.Entities.World;
 using MonoGame.Extended.ViewportAdapters;
-
-using System.Collections;
+using MonoGame.Extended;
+using SceneWorld = MonoGame.Extended.Entities.World;
 
 namespace Kazaam {
   
@@ -21,17 +15,12 @@ namespace Kazaam {
   /// A collection of Kazaam.Universe objects that define a world in the engine.
   /// </summary>
   public class Scene { 
-		public XNAGame game;
+		public readonly XNAGame Game;
 
-		// Scene Objects
-		public HumperWorld hworld;
-    public SceneWorld sworld;
-    public Map _map;
-    public GameObjectFactory Factory { get; set; } 
-		public ArrayList _objects = new ArrayList();
-
-		public float Gravity { get; }
-    public Vector2 Vec { get; set; }
+    // Scene structures
+		public HumperWorld HumperWorld {get; set;}
+    public SceneWorld SceneWorld {get; set;}
+    public Map Map {get; set;}
 
     // Camera
     public int CameraId {get; set;}
@@ -39,10 +28,10 @@ namespace Kazaam {
     public Body CameraFocus {get; set;}
 
 		public Scene(XNAGame game, SceneWorld world) {
-			this.game = game;
-      this.sworld = world;
+			this.Game = game;
+      this.SceneWorld = world;
       
-      hworld = new HumperWorld(120 * 32, 120 * 32);
+      HumperWorld = new HumperWorld(120 * 32, 120 * 32);
 
       // Camera
       SetupCamera();
@@ -51,28 +40,20 @@ namespace Kazaam {
     /// <summary>
     /// Plays a background track, ending any currently active song
     /// </summary>
-    public void PlayBackgroundTrack(Song song) {
+    public static void PlayBackgroundTrack(Song song) {
       MediaPlayer.Play(song);
     }
 
     /// <summary>
     /// Pauses the current background track, with progress saved
     /// </summary>
-    public void PauseBackgroundTrack() {
+    public static void PauseBackgroundTrack() {
       MediaPlayer.Pause();
-    }
-    
-    public void AddEntity(System.Collections.Generic.List<object> list) {
-      var entity = sworld.CreateEntity();
-      foreach (var component in list) {
-        entity.Attach(component);
-      }
-      return;
     }
 
     private void SetupCamera() {
-      var cameraEntity = sworld.CreateEntity();
-      var viewportAdapter = new BoxingViewportAdapter(game.Window, game.GraphicsDevice, (int)game.Resolution.X, (int)game.Resolution.Y);
+      var cameraEntity = SceneWorld.CreateEntity();
+      var viewportAdapter = new BoxingViewportAdapter(Game.Window, Game.GraphicsDevice, (int)Game.Resolution.X, (int)Game.Resolution.Y);
       var cameraComponent = new CameraComponent();
       cameraComponent.InternalCamera = new OrthographicCamera(viewportAdapter);
       cameraComponent.CameraFocus = CameraFocus;
@@ -82,7 +63,7 @@ namespace Kazaam {
     }
 
     public void SetCameraFocus(Body body) {
-      var cameraEntity = sworld.GetEntity(CameraId);
+      var cameraEntity = SceneWorld.GetEntity(CameraId);
       var cameraComponent = cameraEntity.Get<CameraComponent>();
       cameraComponent.CameraFocus = body;
     }
