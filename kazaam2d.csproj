@@ -107,6 +107,7 @@
     <Compile Include="src\ObjectState.cs" />
     <Compile Include="src\Objects\Body.cs" />
     <Compile Include="src\Scene.cs" />
+    <Compile Include="src\SoundManager.cs" />
     <Compile Include="src\State.cs" />
     <Compile Include="src\Systems\CameraSystem.cs" />
     <Compile Include="src\Systems\DynamicsSystem.cs" />
