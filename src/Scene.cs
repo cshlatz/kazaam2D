@@ -27,13 +27,16 @@ namespace Kazaam {
 		public HumperWorld hworld;
     public SceneWorld sworld;
     public Map _map;
-    public Camera mainCamera;
     public GameObjectFactory Factory { get; set; } 
 		public ArrayList _objects = new ArrayList();
 
 		public float Gravity { get; }
     public Vector2 Vec { get; set; }
 
+    // Camera
+    public int CameraId {get; set;}
+    public Matrix CameraMatrix {get; set;}
+    public Body CameraFocus {get; set;}
 
 		public Scene(XNAGame game, SceneWorld world) {
 			this.game = game;
@@ -41,19 +44,8 @@ namespace Kazaam {
       
       hworld = new HumperWorld(120 * 32, 120 * 32);
 
-      // World physics
-			Gravity = 9.8f;
-
       // Camera
-      mainCamera = new Camera(game);
-		}
-
-    public void SetCameraFocus(Body focus) {
-      mainCamera.CameraFocus = focus;
-    }
-
-		public ArrayList SceneObjects() {
-			return _objects;
+      SetupCamera();
 		}
 
     /// <summary>
@@ -78,6 +70,22 @@ namespace Kazaam {
       return;
     }
 
+    private void SetupCamera() {
+      var cameraEntity = sworld.CreateEntity();
+      var viewportAdapter = new BoxingViewportAdapter(game.Window, game.GraphicsDevice, (int)game.Resolution.X, (int)game.Resolution.Y);
+      var cameraComponent = new CameraComponent();
+      cameraComponent.InternalCamera = new OrthographicCamera(viewportAdapter);
+      cameraComponent.CameraFocus = CameraFocus;
+      cameraEntity.Attach(new Body());
+      cameraEntity.Attach(cameraComponent);
+      CameraId = cameraEntity.Id;
+    }
+
+    public void SetCameraFocus(Body body) {
+      var cameraEntity = sworld.GetEntity(CameraId);
+      var cameraComponent = cameraEntity.Get<CameraComponent>();
+      cameraComponent.CameraFocus = body;
+    }
 
   }
 }

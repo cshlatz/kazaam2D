@@ -110,9 +110,11 @@
     <Compile Include="src\Systems\WorldSystem.cs" />
     <Compile Include="src\Systems\RenderSystem.cs" />
     <Compile Include="src\Systems\DynamicsSystem.cs" />
+    <Compile Include="src\Systems\CameraSystem.cs" />
     <Compile Include="src\Components\PhysicsComponent.cs" />
     <Compile Include="src\Components\RenderComponent.cs" />
     <Compile Include="src\Components\PlayerComponent.cs" />
+    <Compile Include="src\Components\CameraComponent.cs" />
     <Compile Include="src\Objects\Body.cs" />
     <Compile Include="src\GameObjectFactory.cs" />
     <Compile Include="src\Systems\PlayerSystem.cs" />

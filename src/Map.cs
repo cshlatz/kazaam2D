@@ -42,8 +42,8 @@ namespace Kazaam.Universe
         sb.Begin(samplerState: SamplerState.PointClamp);
         //sb.Draw(background, new Rectangle(0, 0, (int)scene.game.Resolution.X, (int)scene.game.Resolution.Y), Color.White);
         sb.End();
-        sb.Begin(transformMatrix: scene.mainCamera.GetViewMatrix(), samplerState: SamplerState.PointClamp);
-        mapRenderer.Draw(scene.mainCamera.GetViewMatrix());
+        sb.Begin(transformMatrix: scene.CameraMatrix, samplerState: SamplerState.PointClamp);
+        mapRenderer.Draw(scene.CameraMatrix);
         sb.End();
       }
     } 

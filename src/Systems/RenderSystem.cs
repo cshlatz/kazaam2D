@@ -48,12 +48,13 @@ namespace Kazaam.View {
         }
 
         Rectangle sourceRectangle = body.CurrentAnimation.CurrentRectangle;
-        var transformMatrix = _game.scene.mainCamera.GetViewMatrix();
+        var transformMatrix = _game.scene.CameraMatrix;
         _game.GameWindow.spriteBatch.Begin(transformMatrix : transformMatrix, samplerState: SamplerState.PointClamp);
 
         foreach (Hitbox hb in body.hitboxes) {
           hb.Draw(_game.GameWindow.spriteBatch, _game.scene);
         }
+
 			  _game.GameWindow.spriteBatch.Draw(
              renderComp.Texture,
              new Vector2(body.Bounds.X * body.Scale, body.Bounds.Y * body.Scale),
