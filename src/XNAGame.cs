@@ -75,8 +75,9 @@ namespace Kazaam {
       }
 
       protected override void Draw(GameTime gameTime) {
-        GraphicsDevice.Clear(Color.BlanchedAlmond);
+        GraphicsDevice.Clear(Color.Black);
         _world.Draw(gameTime);
+        scene.Gui.Render();
         base.Draw(gameTime);
       }
 
