@@ -74,6 +74,13 @@
     <Reference Include="MonoGame.Extended.Tiled">
       <HintPath>..\packages\MonoGame.Extended.Tiled.3.7.0\lib\netstandard2.0\MonoGame.Extended.Tiled.dll</HintPath>
     </Reference>
+    <Reference Include="MonoGame.Extended.Input">
+      <HintPath>..\packages\MonoGame.Extended.Input.3.7.0\lib\netstandard2.0\MonoGame.Extended.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Myra">
+      <HintPath>..\..\..\Projects\kazaam\packages\Myra.0.9.3.178\lib\net45\Myra.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\Animation\Animation.cs" />
@@ -85,6 +92,7 @@
     <Compile Include="src\Components\RenderComponent.cs" />
     <Compile Include="src\GameEntity.cs" />
     <Compile Include="src\GameObjectFactory.cs" />
+    <Compile Include="src\Gui.cs" />
     <Compile Include="src\Hitbox.cs" />
     <Compile Include="src\IDrawable.cs" />
     <Compile Include="src\IDynamic.cs" />
