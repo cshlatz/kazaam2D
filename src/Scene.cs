@@ -27,14 +27,24 @@ namespace Kazaam {
     public Matrix CameraMatrix {get; set;}
     public Body CameraFocus {get; set;}
 
-    public Scene(XNAGame game, SceneWorld world) {
+    public Scene(XNAGame game) {
       this.Game = game;
-      this.SceneWorld = world;
       
       HumperWorld = new HumperWorld(120 * 32, 120 * 32);
+    }
 
-      // Camera
-      SetupCamera();
+    /// <summary>
+    /// The default implementation of an ECS world
+    /// </summary>
+    public void InitializeWorld() {
+       SceneWorld = new WorldBuilder()
+         .AddSystem(new WorldSystem(Game))
+         .AddSystem(new PlayerSystem())
+         .AddSystem(new RenderSystem(Game))
+         .AddSystem(new DynamicsSystem())
+         .AddSystem(new CameraSystem(Game))
+         .AddSystem(new UISystem(Game))
+         .Build();
     }
 
     /// <summary>
@@ -49,24 +59,6 @@ namespace Kazaam {
     /// </summary>
     public static void PauseBackgroundTrack() {
       MediaPlayer.Pause();
-    }
-
-    private void SetupCamera() {
-      var cameraEntity = SceneWorld.CreateEntity();
-      var viewportAdapter = new BoxingViewportAdapter(Game.Window, Game.GraphicsDevice, (int)Game.Resolution.X, (int)Game.Resolution.Y);
-      var cameraComponent = new CameraComponent();
-      cameraComponent.InternalCamera = new OrthographicCamera(viewportAdapter);
-      cameraComponent.InternalCamera.Zoom = 1f;
-      cameraComponent.CameraFocus = CameraFocus;
-      cameraEntity.Attach(new Body());
-      cameraEntity.Attach(cameraComponent);
-      CameraId = cameraEntity.Id;
-    }
-
-    public void SetCameraFocus(Body body) {
-      var cameraEntity = SceneWorld.GetEntity(CameraId);
-      var cameraComponent = cameraEntity.Get<CameraComponent>();
-      cameraComponent.CameraFocus = body;
     }
 
   }

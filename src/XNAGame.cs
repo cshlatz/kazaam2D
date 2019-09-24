@@ -1,19 +1,8 @@
 ﻿using Kazaam.Assets;
 using Kazaam.Display;
-using Kazaam.Objects;
 using Kazaam.Input;
-using Kazaam.Universe;
-using Kazaam.View;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-
-using MonoGame.Extended.Entities;
-
-using System;
+using Microsoft.Xna.Framework;
 using System.Collections;
 
 namespace Kazaam {
@@ -21,7 +10,6 @@ namespace Kazaam {
     /// The main game engine class that handles the game loop, physics updates and rendering.
     /// </summary>
     public class XNAGame : Game {
-      protected World _world;
       public Stack states;
       public Vector2 Resolution;
       public Scene scene;
@@ -41,8 +29,8 @@ namespace Kazaam {
 
       protected override void Initialize() {
         base.Initialize();
-        InitializeWorld();
         InitializeEngine();
+        InitializeWorld();
         InitializeLoaders();
         InitializeInput();
       }
@@ -50,19 +38,11 @@ namespace Kazaam {
       public virtual void InitializeEngine() {
         IsFixedTimeStep = false;
         states = new Stack();
-        scene = new Scene(this, _world);
+        scene = new Scene(this);
       }
 
       public virtual void InitializeWorld() {
-        _world = new WorldBuilder()
-          .AddSystem(new WorldSystem(this))
-          .AddSystem(new PlayerSystem())
-          .AddSystem(new RenderSystem(this))
-          .AddSystem(new DynamicsSystem())
-          .AddSystem(new CameraSystem(this))
-          .AddSystem(new UISystem(this))
-          .Build();
-        Components.Add(_world);
+        scene.InitializeWorld();
       }
 
       public virtual void InitializeInput() {
@@ -91,12 +71,12 @@ namespace Kazaam {
 
       protected override void Draw(GameTime gameTime) {
         GraphicsDevice.Clear(Color.Black);
-        _world.Draw(gameTime);
+        scene.SceneWorld.Draw(gameTime);
         base.Draw(gameTime);
       }
 
       protected override void Update(GameTime gameTime) {
-        _world.Update(gameTime);
+        scene.SceneWorld.Update(gameTime);
         InputManager.Update(); // Input manager is ALWAYS called
         base.Update(gameTime);
       }
