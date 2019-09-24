@@ -56,6 +56,7 @@ namespace Kazaam {
       var viewportAdapter = new BoxingViewportAdapter(Game.Window, Game.GraphicsDevice, (int)Game.Resolution.X, (int)Game.Resolution.Y);
       var cameraComponent = new CameraComponent();
       cameraComponent.InternalCamera = new OrthographicCamera(viewportAdapter);
+      cameraComponent.InternalCamera.Zoom = 1f;
       cameraComponent.CameraFocus = CameraFocus;
       cameraEntity.Attach(new Body());
       cameraEntity.Attach(cameraComponent);

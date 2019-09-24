@@ -36,8 +36,11 @@ namespace Kazaam.View {
       body.Position = centerOfObject;
       camera.InternalCamera.Position = body.Position -= center;
 
+      // Make any updates such as zoom to the matrix.
+      Matrix cameraMatrix = camera.InternalCamera.GetViewMatrix();
+
       // Update the scene's current transform matrix
-      game.scene.CameraMatrix = camera.InternalCamera.GetViewMatrix();
+      game.scene.CameraMatrix = cameraMatrix;
     }
   }
 }
