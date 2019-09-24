@@ -1,6 +1,5 @@
 using HumperWorld = Humper.World;
 using Kazaam.Objects;
-using Kazaam.Display;
 using Kazaam.Universe;
 using Kazaam.View;
 using Microsoft.Xna.Framework.Media;
@@ -17,8 +16,6 @@ namespace Kazaam {
   /// </summary>
   public class Scene { 
     public readonly XNAGame Game;
-    // GUI
-    public Gui Gui {get; set;}
 
     // Scene structures
     public HumperWorld HumperWorld {get; set;}
@@ -33,7 +30,6 @@ namespace Kazaam {
     public Scene(XNAGame game, SceneWorld world) {
       this.Game = game;
       this.SceneWorld = world;
-      this.Gui = new Gui(game);
       
       HumperWorld = new HumperWorld(120 * 32, 120 * 32);
 
