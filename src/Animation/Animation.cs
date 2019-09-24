@@ -62,6 +62,9 @@ namespace Kazaam.Animate {
     }
 
     public void Update(float delta) {
+      if (frames.Count == 0) {
+        return;
+      }
       delta *= 0.001f;
       double secondsIntoAnimation = timeIntoAnimation.TotalSeconds + delta;
 

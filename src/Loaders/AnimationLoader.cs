@@ -82,7 +82,7 @@ namespace Kazaam.Assets {
       meta = spritesheet.Meta;
 
       foreach (AseMetaFrame frame in meta.FrameTags) {
-        int index = 0;
+        int index = -1;
         var animation = new Animation();
         foreach (AseFrames frames in spritesheet.Frames) {
           index++;
