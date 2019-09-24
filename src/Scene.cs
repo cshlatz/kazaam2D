@@ -5,8 +5,6 @@ using Kazaam.View;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Entities;
-using MonoGame.Extended.ViewportAdapters;
-using MonoGame.Extended;
 using SceneWorld = MonoGame.Extended.Entities.World;
 
 namespace Kazaam {
@@ -15,12 +13,10 @@ namespace Kazaam {
   /// A collection of Kazaam.Universe objects that define a world in the engine.
   /// </summary>
   public class Scene { 
+    public Map Map {get; set;}
     public readonly XNAGame Game;
 
-    // Scene structures
-    public HumperWorld HumperWorld {get; set;}
     public SceneWorld SceneWorld {get; set;}
-    public Map Map {get; set;}
 
     // Camera
     public int CameraId {get; set;}
@@ -29,8 +25,6 @@ namespace Kazaam {
 
     public Scene(XNAGame game) {
       this.Game = game;
-      
-      HumperWorld = new HumperWorld(120 * 32, 120 * 32);
     }
 
     /// <summary>
