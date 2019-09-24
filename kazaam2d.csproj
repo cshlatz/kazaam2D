@@ -123,6 +123,7 @@
     <Compile Include="src\Systems\DynamicsSystem.cs" />
     <Compile Include="src\Systems\PlayerSystem.cs" />
     <Compile Include="src\Systems\RenderSystem.cs" />
+    <Compile Include="src\Systems\UISystem.cs" />
     <Compile Include="src\Systems\WorldSystem.cs" />
     <Compile Include="src\Tags.cs" />
     <Compile Include="src\XNAGame.cs" />

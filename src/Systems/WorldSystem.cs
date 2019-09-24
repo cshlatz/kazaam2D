@@ -27,8 +27,14 @@ namespace Kazaam.Universe
 
         protected override void OnEntityAdded(int entityId)
         {
-            var body = _bodyMapper.Get(entityId);
-            _world.Create(body.Position.X, body.Position.Y, body.Dimensions.X, body.Dimensions.Y);
+            // TODO: This needs a more permanent solution.
+            try {
+              var body = _bodyMapper.Get(entityId);
+              _world.Create(body.Position.X, body.Position.Y, body.Dimensions.X, body.Dimensions.Y);
+            } catch {
+
+            }
+
         }
 
         protected override void OnEntityRemoved(int entityId)

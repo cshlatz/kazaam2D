@@ -47,6 +47,7 @@ namespace Kazaam {
           .AddSystem(new RenderSystem(this))
           .AddSystem(new DynamicsSystem())
           .AddSystem(new CameraSystem(this))
+          .AddSystem(new UISystem(this))
           .Build();
 
         Components.Add(_world);
@@ -77,7 +78,6 @@ namespace Kazaam {
       protected override void Draw(GameTime gameTime) {
         GraphicsDevice.Clear(Color.Black);
         _world.Draw(gameTime);
-        scene.Gui.Render();
         base.Draw(gameTime);
       }
 
