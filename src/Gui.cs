@@ -4,15 +4,19 @@ using System.IO;
 
 namespace Kazaam.Display {
   public class Gui {
-    private Desktop desktop;
+    private readonly Desktop desktop;
     private Grid grid;
+    private bool Active;
+
     public Gui(XNAGame game) {
       desktop = new Desktop();
       MyraEnvironment.Game = game;
     }
 
     public void Render() {
-      desktop.Render();
+      if (Active) {
+        desktop.Render();
+      }
     }
 
     public void LoadGui(string path) {
@@ -22,5 +26,14 @@ namespace Kazaam.Display {
       grid = projectgrid;
       desktop.Widgets.Add(grid);
     }
+
+    public void Toggle() {
+      Active = !Active;
+    }
+
+    public void DebugShowGridLines() {
+      grid.ShowGridLines = !grid.ShowGridLines;
+    }
+
   }
 }
