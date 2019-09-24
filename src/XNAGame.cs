@@ -41,6 +41,19 @@ namespace Kazaam {
 
       protected override void Initialize() {
         base.Initialize();
+        InitializeWorld();
+        InitializeEngine();
+        InitializeLoaders();
+        InitializeInput();
+      }
+
+      public virtual void InitializeEngine() {
+        IsFixedTimeStep = false;
+        states = new Stack();
+        scene = new Scene(this, _world);
+      }
+
+      public virtual void InitializeWorld() {
         _world = new WorldBuilder()
           .AddSystem(new WorldSystem(this))
           .AddSystem(new PlayerSystem())
@@ -49,13 +62,14 @@ namespace Kazaam {
           .AddSystem(new CameraSystem(this))
           .AddSystem(new UISystem(this))
           .Build();
-
         Components.Add(_world);
-        states = new Stack();
-        scene = new Scene(this, _world);
-        InputManager.Initialize();
-        IsFixedTimeStep = false;
+      }
 
+      public virtual void InitializeInput() {
+        InputManager.Initialize();
+      }
+
+      public virtual void InitializeLoaders() {
         // Json Asset loader
         jsonLoader = new AssetLoader(this, new JsonFileStream());
         jsonLoader.RegisterType("animations", new AnimationLoader());
