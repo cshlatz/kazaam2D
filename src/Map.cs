@@ -1,5 +1,5 @@
-﻿using Kazaam.Objects;
-
+﻿using HumperWorld = Humper.World;
+using Kazaam.Objects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Tiled;
@@ -16,6 +16,8 @@ namespace Kazaam.Universe
 
       private TiledMapRenderer mapRenderer;
 
+      public int width;
+      public int height;
       public int tileWidth;
       public int tileHeight;
 
@@ -25,11 +27,16 @@ namespace Kazaam.Universe
 
       public Vector2 StartingPosition;
 
+      public HumperWorld HumperWorld {get; set;}
+
       public Map(TiledMap map, int tileWidth, int tileHeight, GraphicsDevice gd) {
         this.map = map;
         this.mapRenderer = new TiledMapRenderer(gd, map);
+        width = map.Width;
+        height = map.Height;
         this.tileWidth = tileWidth;
         this.tileHeight = tileHeight;
+        HumperWorld = new HumperWorld(tileWidth * width, tileHeight * height);
         //background = this.scene.game.Content.Load<Texture2D>("resources/bin/maps/surface/bg1");
       }
 
