@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using Microsoft.Xna.Framework.Content;
 
 namespace Kazaam.Assets {
 
@@ -30,10 +31,10 @@ namespace Kazaam.Assets {
         var loader = loaders[type];
         var stream = provider.GetStream(type, name);
         return loader.Load(stream);
-      } catch (FileNotFoundException e) {
-
+      } catch (ContentLoadException e) {
+        XNAGame.Log(e.ToString());
+        return null;
       }
-      return null;
     }
 
     public void RegisterType(string key, ITypeLoader loader) {

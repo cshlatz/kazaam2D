@@ -4,6 +4,7 @@ using Kazaam.Input;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Collections;
+using System;
 
 namespace Kazaam {
     /// <summary>
@@ -79,6 +80,10 @@ namespace Kazaam {
         scene.SceneWorld.Update(gameTime);
         InputManager.Update(); // Input manager is ALWAYS called
         base.Update(gameTime);
+      }
+
+      public static void Log(string message) {
+        Console.WriteLine(message);
       }
     }
 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Content;
 
 namespace Kazaam.Assets {
   /// <summary>
@@ -16,7 +17,12 @@ namespace Kazaam.Assets {
 
     public object LoadContent(string type, string name) {
       var loader = loaders[type];
-      return loader.Load(Game, name);
+      try {
+        return loader.Load(Game, name);
+      } catch (ContentLoadException e) {
+        XNAGame.Log(e.ToString());
+        return null;
+      }
     }
 
     public void RegisterType(string key, IContentLoader loader) {
