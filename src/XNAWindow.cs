@@ -16,39 +16,40 @@ namespace Kazaam.Display
     /// <summary>
     /// A window that displays graphics to the user.
     /// </summary>
-    public class XNAWindow
-    {
+    public class XNAWindow {
         private GraphicsDeviceManager graphics;
         private Game game;
         public SpriteBatch spriteBatch;
         private ArrayList sprites;
 
-        public XNAWindow(Game game)
-        {
-            this.game = game;
+        public int XResolution {get; private set;}
+        public int YResolution {get; private set;}
 
-            graphics = new GraphicsDeviceManager(this.game);
-            graphics.PreferMultiSampling = false;
-            graphics.SynchronizeWithVerticalRetrace = false;
-            graphics.ApplyChanges();
+        public XNAWindow(Game game) {
+          this.game = game;
 
-            sprites = new ArrayList();
-            spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
+          graphics = new GraphicsDeviceManager(this.game);
+          graphics.PreferMultiSampling = false;
+          graphics.SynchronizeWithVerticalRetrace = false;
+          graphics.ApplyChanges();
 
-        }
-
-        public void Run() {
-          
+          sprites = new ArrayList();
+          spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
         }
 
         public GraphicsDeviceManager Window() {
           return graphics;
         }
 
-        public void Close() {
-
+        /// <summary>
+        /// Changes the resolution of the game window.
+        /// </summary>
+        public void Resolution(int x, int y) {
+          XResolution = x;
+          YResolution = y;
+          Window().PreferredBackBufferWidth = XResolution;
+          Window().PreferredBackBufferHeight = YResolution;
+          Window().ApplyChanges();
         }
-
-
     }
 }

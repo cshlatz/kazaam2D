@@ -11,13 +11,9 @@ namespace Kazaam.View {
     private ComponentMapper<Body> _bodyMapper;
     private ComponentMapper<CameraComponent> _cameraMapper;
     private readonly XNAGame game;
-    private int xres;
-    private int yres;
 
     public CameraSystem(XNAGame game) : base(Aspect.All(typeof(CameraComponent), typeof(Body))) {
       this.game = game;
-      xres = (int)game.Resolution.X;
-      yres = (int)game.Resolution.Y;
     }
 
     public override void Initialize(IComponentMapperService mapperService) {
@@ -30,7 +26,7 @@ namespace Kazaam.View {
       var camera = _cameraMapper.Get(entityId);
 
       // Update the camera's position to the current focus
-      var viewportAdapter = new BoxingViewportAdapter(game.Window, game.GraphicsDevice, xres, yres);
+      var viewportAdapter = new BoxingViewportAdapter(game.Window, game.GraphicsDevice, game.GameWindow.XResolution, game.GameWindow.YResolution);
       var center = new Vector2(viewportAdapter.VirtualWidth/2f, viewportAdapter.VirtualHeight/2f);
       var centerOfObject = new Vector2(camera.CameraFocus.Position.X + (camera.CameraFocus.Bounds.Width / 2), camera.CameraFocus.Position.Y + (camera.CameraFocus.Bounds.Height / 2));
       body.Position = centerOfObject;

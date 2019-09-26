@@ -12,7 +12,6 @@ namespace Kazaam {
     /// </summary>
     public class XNAGame : Game {
       public Stack states;
-      public Vector2 Resolution;
       public Scene scene;
       public AssetLoader jsonLoader;
       public ContentLoader contentLoader;
@@ -25,7 +24,6 @@ namespace Kazaam {
 
       public XNAGame () {
         GameWindow = new XNAWindow(this);
-        SetResolution(1280, 720);
       }
 
       protected override void Initialize() {
@@ -61,13 +59,6 @@ namespace Kazaam {
         contentLoader.RegisterType("sounds", new SoundLoader());
         contentLoader.RegisterType("songs", new SongLoader());
         contentLoader.RegisterType("sprites", new SpriteLoader());
-      }
-
-      protected void SetResolution(int x, int y) {
-        Resolution = new Vector2(x, y);
-        GameWindow.Window().PreferredBackBufferWidth = (int)Resolution.X;
-        GameWindow.Window().PreferredBackBufferHeight = (int)Resolution.Y;
-        GameWindow.Window().ApplyChanges();
       }
 
       protected override void Draw(GameTime gameTime) {
