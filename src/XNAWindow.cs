@@ -1,6 +1,4 @@
-﻿using Kazaam.Objects;
-using Kazaam.Universe;
-
+﻿using MonoGame.Extended.ViewportAdapters;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -21,6 +19,7 @@ namespace Kazaam.Display
         private Game game;
         public SpriteBatch spriteBatch;
         private ArrayList sprites;
+        public BoxingViewportAdapter ViewportAdapter {get; private set;}
 
         public int XResolution {get; private set;}
         public int YResolution {get; private set;}

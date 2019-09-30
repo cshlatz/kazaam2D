@@ -30,7 +30,9 @@ namespace Kazaam.View {
       var center = new Vector2(viewportAdapter.VirtualWidth/2f, viewportAdapter.VirtualHeight/2f);
       var centerOfObject = new Vector2(camera.CameraFocus.Position.X + (camera.CameraFocus.Bounds.Width / 2), camera.CameraFocus.Position.Y + (camera.CameraFocus.Bounds.Height / 2));
       body.Position = centerOfObject;
+      camera.InternalCamera = new MonoGame.Extended.OrthographicCamera(viewportAdapter);
       camera.InternalCamera.Position = body.Position -= center;
+      camera.InternalCamera.Zoom = camera.Zoom;
 
       // Make any updates such as zoom to the matrix.
       Matrix cameraMatrix = camera.InternalCamera.GetViewMatrix();
