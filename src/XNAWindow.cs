@@ -26,12 +26,7 @@ namespace Kazaam.Display
 
         public XNAWindow(Game game) {
           this.game = game;
-
-          graphics = new GraphicsDeviceManager(this.game);
-          graphics.PreferMultiSampling = false;
-          graphics.SynchronizeWithVerticalRetrace = false;
-          graphics.ApplyChanges();
-
+          createGraphics(false);
           sprites = new ArrayList();
           spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
         }
@@ -49,6 +44,25 @@ namespace Kazaam.Display
           Window().PreferredBackBufferWidth = XResolution;
           Window().PreferredBackBufferHeight = YResolution;
           Window().ApplyChanges();
+        }
+
+        /// <summary>
+        /// Toggles fullscreen on and off.
+        /// </summary>
+        public void ToggleFullscreen() {
+          graphics.IsFullScreen = !graphics.IsFullScreen;
+          graphics.ApplyChanges();
+        }
+
+        /// <summary>
+        /// Internal method to create the graphics device.
+        /// </summary>
+        private void createGraphics(bool fullscreen) {
+          graphics = new GraphicsDeviceManager(game);
+          graphics.PreferMultiSampling = false;
+          graphics.SynchronizeWithVerticalRetrace = false;
+          graphics.IsFullScreen = fullscreen;
+          graphics.ApplyChanges();
         }
     }
 }
