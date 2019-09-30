@@ -35,7 +35,7 @@ namespace Kazaam {
       }
 
       public virtual void InitializeEngine() {
-        IsFixedTimeStep = false;
+        IsFixedTimeStep = true; // Caps the engine at 60 FPS.
         states = new Stack();
         scene = new Scene(this);
       }
