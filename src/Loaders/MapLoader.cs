@@ -3,6 +3,7 @@ using Kazaam.Universe;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
+using System.Collections.Generic;
 
 namespace Kazaam.Assets
 {
@@ -13,7 +14,6 @@ namespace Kazaam.Assets
     public class MapLoader : IContentLoader {
     public Map map;
     public TiledMap tiledMap;
-    
     private XNAGame game;
 
     public void SetGame(XNAGame game) {
@@ -46,19 +46,7 @@ namespace Kazaam.Assets
             if (tileTry.HasValue) {
               TiledMapTile tile = (TiledMapTile) tileTry;
               if (tile.GlobalIdentifier > 0) {
-                // Create platforms
-                switch (tileLayer.Name) {
-                  // TODO: Get rid of these hardcoded strings
-                  case "Platform":
-                    var body = new Body();
-                    body.Dimensions = new Vector2(map.tileWidth, map.tileHeight);
-                    body.Position = new Vector2(map.tileWidth * x, map.tileHeight * y);
-                    body.Bounds = map.HumperWorld.Create(body.Position.X, body.Position.Y, body.Dimensions.X, body.Dimensions.Y);
-                    body.Bounds.AddTags(Enums.Tags.Platforms);
-                    var entity = game.scene.SceneWorld.CreateEntity();
-                    entity.Attach(body);
-                    break;
-                }
+                game.scene.Strategy.Load(map, tileLayer.Name, x, y);
               }
             }
           }
