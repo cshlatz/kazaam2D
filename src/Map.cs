@@ -1,5 +1,4 @@
 ﻿using HumperWorld = Humper.World;
-using Kazaam.Objects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Tiled;

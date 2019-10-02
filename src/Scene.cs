@@ -1,3 +1,4 @@
+using Kazaam.Assets;
 using HumperWorld = Humper.World;
 using Kazaam.Objects;
 using Kazaam.Universe;
@@ -25,6 +26,17 @@ namespace Kazaam {
 
     public Scene(XNAGame game) {
       this.Game = game;
+    }
+
+    private ITiledStrategy _strategy;
+
+    public ITiledStrategy Strategy {
+      get {
+        return _strategy;
+      }
+      set {
+        _strategy = value;
+      }
     }
 
     /// <summary>
