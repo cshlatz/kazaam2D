@@ -52,6 +52,7 @@ namespace Kazaam {
         // Json Asset loader
         jsonLoader = new AssetLoader(this, new JsonFileStream());
         jsonLoader.RegisterType("animations", new AnimationLoader());
+        jsonLoader.RegisterType("ui", new UILoader());
 
         // XNB Asset loader
         contentLoader = new ContentLoader(this);

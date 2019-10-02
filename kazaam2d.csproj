@@ -110,6 +110,7 @@
     <Compile Include="src\Loaders\SongLoader.cs" />
     <Compile Include="src\Loaders\SoundLoader.cs" />
     <Compile Include="src\Loaders\SpriteLoader.cs" />
+    <Compile Include="src\Loaders\UILoader.cs" />
     <Compile Include="src\Map.cs" />
     <Compile Include="src\Music.cs" />
     <Compile Include="src\Namespaces.cs" />

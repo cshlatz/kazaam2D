@@ -1,11 +1,10 @@
 using Myra;
 using Myra.Graphics2D.UI;
-using System.IO;
 
 namespace Kazaam.Display {
   public class Gui {
     private readonly Desktop desktop;
-    public Project project;
+    private Project project;
     private Grid grid;
     private bool Active;
 
@@ -20,12 +19,23 @@ namespace Kazaam.Display {
       }
     }
 
-    public void LoadGui(string path) {
-      string data = File.ReadAllText(path);
-      project = Project.LoadFromXml(data);
-      var projectgrid = (Grid)project.Root;
-      grid = projectgrid;
-      desktop.Widgets.Add(grid);
+    /// <summary>
+    /// Get: returns the Myra project object
+    /// Set: Sets the Myra project and the grid
+    /// </summary>
+    public Project Project {
+      get {
+        return project;
+      }
+      set {
+        project = value;
+        grid = (Grid)project.Root;
+        Add(grid);
+      }
+    }
+
+    public void Add(Widget item) {
+      desktop.Widgets.Add(item);
     }
 
     public void Toggle() {
