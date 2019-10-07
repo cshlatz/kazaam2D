@@ -54,7 +54,9 @@ namespace Kazaam.Universe
 
         public void Draw(GameTime gameTime)
         {
-            _game.scene.Map.Draw(_game.GameWindow.spriteBatch, _game.scene);
+            foreach (Map map in _game.scene.SceneMaps) {
+              map.Draw(_game.GameWindow.spriteBatch, _game.scene);
+            }
         }
     }
 }

@@ -16,6 +16,17 @@ namespace Kazaam.Assets
     public TiledMap tiledMap;
     private XNAGame game;
 
+    private ITiledStrategy _strategy;
+
+    public ITiledStrategy Strategy {
+      get {
+        return _strategy;
+      }
+      set {
+        _strategy = value;
+      }
+    }
+
     public void SetGame(XNAGame game) {
       this.game = game;
     }
@@ -36,7 +47,11 @@ namespace Kazaam.Assets
     /// </summary>
     private void LoadMapContent() {
       foreach (TiledMapObjectLayer objectLayer in tiledMap.ObjectLayers) {
-        map.StartingPosition = objectLayer.Objects[0].Position;
+        try {
+            map.StartingPosition = objectLayer.Objects[0].Position;
+        } catch {
+
+        }
       }
       foreach (TiledMapTileLayer tileLayer in tiledMap.TileLayers) {
         for (ushort x = 0; x < tileLayer.Width; x++) {
@@ -46,7 +61,7 @@ namespace Kazaam.Assets
             if (tileTry.HasValue) {
               TiledMapTile tile = (TiledMapTile) tileTry;
               if (tile.GlobalIdentifier > 0) {
-                game.scene.Strategy.Load(map, tileLayer.Name, x, y);
+                _strategy.Load(map, tileLayer.Name, x, y);
               }
             }
           }

@@ -60,7 +60,7 @@ namespace Kazaam.Display
         private void createGraphics(bool fullscreen) {
           graphics = new GraphicsDeviceManager(game);
           graphics.PreferMultiSampling = false;
-          graphics.SynchronizeWithVerticalRetrace = false;
+          graphics.SynchronizeWithVerticalRetrace = true;
           graphics.IsFullScreen = fullscreen;
           graphics.ApplyChanges();
         }
