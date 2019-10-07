@@ -11,7 +11,7 @@ namespace Kazaam.Universe
     /// </summary>
     public class Map : Objects.IDrawable
     {
-      private TiledMap map;
+      public TiledMap map;
 
       private TiledMapRenderer mapRenderer;
 
@@ -19,6 +19,8 @@ namespace Kazaam.Universe
       public int height;
       public int tileWidth;
       public int tileHeight;
+      public float offsetX;
+      public float offsetY;
 
       public Scene scene;
 
@@ -35,7 +37,6 @@ namespace Kazaam.Universe
         height = map.Height;
         this.tileWidth = tileWidth;
         this.tileHeight = tileHeight;
-        HumperWorld = new HumperWorld(tileWidth * width, tileHeight * height);
         //background = this.scene.game.Content.Load<Texture2D>("resources/bin/maps/surface/bg1");
       }
 
@@ -44,12 +45,13 @@ namespace Kazaam.Universe
       }
 
       public void Draw(SpriteBatch sb, Scene scene) {
+        var newMatrix = scene.CameraMatrix * Matrix.CreateTranslation(scene.CameraMatrix.Translation.X + offsetX, scene.CameraMatrix.Translation.Y + offsetY, 0);
         // SamplerState.PointClamp prevents gaps between the tiles while rendering
         sb.Begin(samplerState: SamplerState.PointClamp);
         //sb.Draw(background, new Rectangle(0, 0, (int)scene.game.Resolution.X, (int)scene.game.Resolution.Y), Color.White);
         sb.End();
-        sb.Begin(transformMatrix: scene.CameraMatrix, samplerState: SamplerState.PointClamp);
-        mapRenderer.Draw(scene.CameraMatrix);
+        sb.Begin(transformMatrix: newMatrix, samplerState: SamplerState.PointClamp);
+        mapRenderer.Draw(newMatrix);
         sb.End();
       }
     } 

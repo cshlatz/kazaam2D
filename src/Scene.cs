@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Entities;
 using SceneWorld = MonoGame.Extended.Entities.World;
+using System.Collections.Generic;
 
 namespace Kazaam {
   
@@ -28,16 +29,8 @@ namespace Kazaam {
       this.Game = game;
     }
 
-    private ITiledStrategy _strategy;
-
-    public ITiledStrategy Strategy {
-      get {
-        return _strategy;
-      }
-      set {
-        _strategy = value;
-      }
-    }
+    public HumperWorld CollisionBodies;
+    public List<Map> SceneMaps {get; set;}
 
     /// <summary>
     /// The default implementation of an ECS world

@@ -77,10 +77,10 @@
     <Reference Include="MonoGame.Extended.Input">
       <HintPath>..\packages\MonoGame.Extended.Input.3.7.0\lib\netstandard2.0\MonoGame.Extended.Input.dll</HintPath>
     </Reference>
-    <Reference Include="Myra">
-      <HintPath>..\..\..\Projects\kazaam\packages\Myra.0.9.3.178\lib\net45\Myra.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="Myra">
+      <HintPath>..\..\..\Projects\kazaam\packages\Myra.0.9.4.180\lib\net45\Myra.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\Animation\Animation.cs" />
