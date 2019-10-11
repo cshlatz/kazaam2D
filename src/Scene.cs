@@ -1,10 +1,8 @@
-using Kazaam.Assets;
 using HumperWorld = Humper.World;
 using Kazaam.Objects;
 using Kazaam.Universe;
 using Kazaam.View;
 using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework;
 using MonoGame.Extended.Entities;
 using SceneWorld = MonoGame.Extended.Entities.World;
 using System.Collections.Generic;
@@ -21,12 +19,11 @@ namespace Kazaam {
     public SceneWorld SceneWorld {get; set;}
 
     // Camera
-    public int CameraId {get; set;}
-    public Matrix CameraMatrix {get; set;}
-    public Body CameraFocus {get; set;}
+    public CameraManager CameraManager {get; set;}
 
     public Scene(XNAGame game) {
       this.Game = game;
+      CameraManager = new CameraManager();
     }
 
     public HumperWorld CollisionBodies;
@@ -41,7 +38,6 @@ namespace Kazaam {
          .AddSystem(new PlayerSystem())
          .AddSystem(new RenderSystem(Game))
          .AddSystem(new DynamicsSystem())
-         .AddSystem(new CameraSystem(Game))
          .AddSystem(new UISystem(Game))
          .Build();
     }

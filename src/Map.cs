@@ -45,7 +45,8 @@ namespace Kazaam.Universe
       }
 
       public void Draw(SpriteBatch sb, Scene scene) {
-        var newMatrix = scene.CameraMatrix * Matrix.CreateTranslation(scene.CameraMatrix.Translation.X + offsetX, scene.CameraMatrix.Translation.Y + offsetY, 0);
+        var newMatrix = scene.CameraManager.View * Matrix.CreateTranslation(scene.CameraManager.View.Translation.X + (offsetX), scene.CameraManager.View.Translation.Y + (offsetY), 0);
+        newMatrix = newMatrix * Matrix.CreateScale(scene.CameraManager.Zoom);
         // SamplerState.PointClamp prevents gaps between the tiles while rendering
         sb.Begin(samplerState: SamplerState.PointClamp);
         //sb.Draw(background, new Rectangle(0, 0, (int)scene.game.Resolution.X, (int)scene.game.Resolution.Y), Color.White);

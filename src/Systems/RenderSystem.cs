@@ -48,7 +48,7 @@ namespace Kazaam.View {
         }
 
         Rectangle sourceRectangle = body.CurrentAnimation.CurrentRectangle;
-        var transformMatrix = _game.scene.CameraMatrix;
+        var transformMatrix = _game.scene.CameraManager.View;
         _game.GameWindow.spriteBatch.Begin(transformMatrix : transformMatrix, samplerState: SamplerState.PointClamp);
 
         foreach (Hitbox hb in body.hitboxes) {
