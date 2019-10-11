@@ -86,7 +86,6 @@
     <Compile Include="src\Animation\Animation.cs" />
     <Compile Include="src\Animation\AnimationFrame.cs" />
     <Compile Include="src\Background.cs" />
-    <Compile Include="src\Components\CameraComponent.cs" />
     <Compile Include="src\Components\PhysicsComponent.cs" />
     <Compile Include="src\Components\PlayerComponent.cs" />
     <Compile Include="src\Components\RenderComponent.cs" />
@@ -121,7 +120,6 @@
     <Compile Include="src\SoundManager.cs" />
     <Compile Include="src\Sprite.cs" />
     <Compile Include="src\State.cs" />
-    <Compile Include="src\Systems\CameraSystem.cs" />
     <Compile Include="src\Systems\DynamicsSystem.cs" />
     <Compile Include="src\Systems\PlayerSystem.cs" />
     <Compile Include="src\Systems\RenderSystem.cs" />
@@ -131,6 +129,7 @@
     <Compile Include="src\XNAGame.cs" />
     <Compile Include="src\XNAWindow.cs" />
     <Compile Include="src\XNBFileStream.cs" />
+    <Compile Include="src\CameraManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
