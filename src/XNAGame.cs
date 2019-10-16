@@ -3,6 +3,7 @@ using Kazaam.Display;
 using Kazaam.Input;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using System.Collections;
 using System;
 
@@ -11,7 +12,7 @@ namespace Kazaam {
     /// The main game engine class that handles the game loop, physics updates and rendering.
     /// </summary>
     public class XNAGame : Game {
-      public Stack states;
+      public Stack<IGameState> states;
       public Scene scene;
       public AssetLoader jsonLoader;
       public ContentLoader contentLoader;
@@ -36,7 +37,7 @@ namespace Kazaam {
 
       public virtual void InitializeEngine() {
         IsFixedTimeStep = true; // Caps the engine at 60 FPS.
-        states = new Stack();
+        states = new Stack<IGameState>();
         scene = new Scene(this);
       }
 
@@ -71,6 +72,7 @@ namespace Kazaam {
       protected override void Update(GameTime gameTime) {
         scene.SceneWorld.Update(gameTime);
         InputManager.Update(); // Input manager is ALWAYS called
+        states.Peek().Update(gameTime);
         base.Update(gameTime);
       }
 
