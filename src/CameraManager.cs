@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace Kazaam.View {
     public interface ICamera {
-        void Update(float dt);
+        void Update(GameTime gameTime);
         Matrix View {get;}
         int Zoom {get; set;}
     }
@@ -20,8 +20,8 @@ namespace Kazaam.View {
             currentCamera = cameras[id];
         }
 
-        public void Update(float dt) {
-            currentCamera.Update(dt);
+        public void Update(GameTime gameTime) {
+            currentCamera.Update(gameTime);
         }
 
         public Matrix View {

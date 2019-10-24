@@ -40,6 +40,12 @@ namespace Kazaam {
          .AddSystem(new DynamicsSystem())
          .AddSystem(new UISystem(Game))
          .Build();
+      SceneWorld.Initialize();
+    }
+
+    public Entity CreateEntity() {
+        var entity = SceneWorld.CreateEntity();
+        return entity;
     }
 
     /// <summary>

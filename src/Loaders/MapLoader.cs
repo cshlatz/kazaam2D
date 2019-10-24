@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
 using System.Collections.Generic;
+using System;
 
 namespace Kazaam.Assets
 {

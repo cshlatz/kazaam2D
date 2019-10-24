@@ -14,7 +14,7 @@ namespace Kazaam.View {
     private ComponentMapper<RenderComponent> _renderMapper;
     private ComponentMapper<Body> _bodyMapper;
 
-    public RenderSystem(XNAGame game) : base(Aspect.All(typeof(RenderComponent))) {
+    public RenderSystem(XNAGame game) : base(Aspect.One(typeof(RenderComponent))) {
       _game = game;
     }
     
