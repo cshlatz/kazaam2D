@@ -130,6 +130,7 @@
     <Compile Include="src\XNAWindow.cs" />
     <Compile Include="src\XNBFileStream.cs" />
     <Compile Include="src\CameraManager.cs" />
+    <Compile Include="src\IPhysicsStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
