@@ -8,6 +8,6 @@
 namespace Kazaam.Objects {
   public interface IPlayer {
     void HandleInput();
-    Body GetBody();
+    Body Body {get; set;}
   }
 }
