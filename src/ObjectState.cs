@@ -1,14 +1,12 @@
-using Kazaam.Input;
-
 namespace Kazaam.Objects {
 
   /// <summary>
   /// A representation of the current state of an object, such as an idle object or a walking object.
   /// </summary>
-  public abstract class ObjectState {
-    public abstract ObjectState HandleInput(IPlayer player);
-    public abstract void Enter(Body obj);
-    public abstract void Exit(Body obj);
-    public abstract void Update(Body obj);
+  public abstract class ObjectState<T> where T : IEntity {
+    public abstract ObjectState<T> HandleInput(T entity);
+    public abstract void Enter(T entity);
+    public abstract void Exit(T entity);
+    public abstract void Update(T entity);
   }
 }

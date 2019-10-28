@@ -24,7 +24,7 @@ namespace Kazaam.Objects {
     public Animation CurrentAnimation { get; set; }
     public Dictionary<string, Animation>  animations;
     public Dictionary<string, SoundEffect> sounds;
-    public ObjectState state;
+    public ObjectState<IEntity> state;
     public bool facingRight;
     public List<Hitbox> hitboxes;
 

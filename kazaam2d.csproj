@@ -131,6 +131,7 @@
     <Compile Include="src\XNBFileStream.cs" />
     <Compile Include="src\CameraManager.cs" />
     <Compile Include="src\IPhysicsStrategy.cs" />
+    <Compile Include="src\IEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
