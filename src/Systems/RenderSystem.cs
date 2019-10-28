@@ -41,7 +41,7 @@ namespace Kazaam.View {
         // This is convoluted, but this allows the user to set a default direction that the texture faces
         // The render component assumes that the texture faces right (X axis increases left to right in the engine)
         // so operate under that assumption.
-        if (body.facingRight) {
+        if (body.FacingRight) {
           effects = effects.HasFlag(SpriteEffects.FlipHorizontally) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
         } else {
           effects = effects.HasFlag(SpriteEffects.FlipHorizontally) ? SpriteEffects.None : SpriteEffects.FlipHorizontally;

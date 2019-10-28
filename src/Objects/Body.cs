@@ -25,10 +25,10 @@ namespace Kazaam.Objects {
     public Dictionary<string, Animation>  animations;
     public Dictionary<string, SoundEffect> sounds;
     public ObjectState<IEntity> state;
-    public bool facingRight;
+    private bool _facingRight;
     public List<Hitbox> hitboxes;
-
     // Dynamics
+
     public bool GravityEnabled { get; set; } // On by default
     public float GravityAcceleration { get; set; }
     public bool OnGround { get; set; }
@@ -48,6 +48,10 @@ namespace Kazaam.Objects {
       if (anim != null) {
         CurrentAnimation = anim;
       }
+    }
+
+    public bool FacingRight {
+        get { return _facingRight; } set { _facingRight = value; }
     }
   }
 
