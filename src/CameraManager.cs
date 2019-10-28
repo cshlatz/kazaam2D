@@ -5,7 +5,7 @@ namespace Kazaam.View {
     public interface ICamera {
         void Update(GameTime gameTime);
         Matrix View {get;}
-        int Zoom {get; set;}
+        float Zoom {get; set;}
     }
 
     public class CameraManager {
@@ -30,7 +30,7 @@ namespace Kazaam.View {
             }
         }
 
-        public int Zoom {
+        public float Zoom {
             get {
                 return currentCamera.Zoom;
             }
