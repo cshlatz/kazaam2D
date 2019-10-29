@@ -33,8 +33,8 @@ namespace Kazaam.Universe
       public Map(TiledMap map, int tileWidth, int tileHeight, GraphicsDevice gd) {
         this.map = map;
         this.mapRenderer = new TiledMapRenderer(gd, map);
-        width = map.Width;
-        height = map.Height;
+        width = map.Width * tileWidth;
+        height = map.Height * tileHeight;
         this.tileWidth = tileWidth;
         this.tileHeight = tileHeight;
         //background = this.scene.game.Content.Load<Texture2D>("resources/bin/maps/surface/bg1");

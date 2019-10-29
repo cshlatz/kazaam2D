@@ -9,10 +9,10 @@ namespace Kazaam.View {
     }
 
     public class CameraManager {
-        private Dictionary<string, ICamera> cameras = new Dictionary<string, ICamera>();
-        private ICamera currentCamera;
+        private Dictionary<string, Camera> cameras = new Dictionary<string, Camera>();
+        private Camera currentCamera;
 
-        public void RegisterCamera(string id, ICamera camera) {
+        public void RegisterCamera(string id, Camera camera) {
             cameras[id] = camera;
         }
 
