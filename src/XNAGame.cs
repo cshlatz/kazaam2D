@@ -70,14 +70,14 @@ namespace Kazaam {
       }
 
       protected override void Draw(GameTime gameTime) {
+        base.Draw(gameTime);
         GraphicsDevice.Clear(Color.Black);
         States.Peek().Draw(gameTime);
-        base.Draw(gameTime);
       }
 
       protected override void Update(GameTime gameTime) {
-        States.Peek().Update(gameTime);
         base.Update(gameTime);
+        States.Peek().Update(gameTime);
       }
 
       public static void Log(string message) {

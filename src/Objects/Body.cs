@@ -1,43 +1,34 @@
 using Kazaam.Animate;
-using Kazaam.Enums;
-
-using Humper;
-
+using Kazaam.Objects;
+using Kazaam.System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 
 using System.Collections.Generic;
 
-namespace Kazaam.Objects {
+namespace Kazaam.Components {
   public enum BodyType {
     Static, Dynamic
   }
 
   public class Body {
-    // Static
-    public IBox Bounds { get; set; }
     public Vector2 Position { get; set; }
-    public Vector2 Dimensions { get; set; }
     public float Scale { get; set; }
     public Texture2D Texture { get; set; }
     public Animation CurrentAnimation { get; set; }
     public Dictionary<string, Animation>  animations;
     public Dictionary<string, SoundEffect> sounds;
     public ObjectState<IEntity> state;
-    private bool _facingRight;
-    public List<Hitbox> hitboxes;
-    // Dynamics
+    public List<Hitbox> Hitboxes { get; set; }
+    public bool FacingRight { get; set; }
 
-    public bool GravityEnabled { get; set; } // On by default
-    public float GravityAcceleration { get; set; }
-    public bool OnGround { get; set; }
-    public Vector2 Velocity { get; set; }
+    public bool DebugDrawHitboxes { get; set; }
 
     public Body() {
       animations = new Dictionary<string, Animation>();
       sounds = new Dictionary<string, SoundEffect>();
-      hitboxes = new List<Hitbox>();
+      Hitboxes = new List<Hitbox>();
     }
 
     public void SetTexture(Texture2D tex) {
@@ -48,10 +39,6 @@ namespace Kazaam.Objects {
       if (anim != null) {
         CurrentAnimation = anim;
       }
-    }
-
-    public bool FacingRight {
-        get { return _facingRight; } set { _facingRight = value; }
     }
   }
 

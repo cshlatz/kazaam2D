@@ -1,3 +1,4 @@
+using Kazaam.Components;
 using Kazaam.Objects;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended;
@@ -29,31 +30,21 @@ namespace Kazaam.Universe
         {
             // TODO: This needs a more permanent solution.
             try {
+            /*
               var body = _bodyMapper.Get(entityId);
               _world.Create(body.Position.X, body.Position.Y, body.Dimensions.X, body.Dimensions.Y);
+            */
             } catch {
 
             }
 
         }
 
-        protected override void OnEntityRemoved(int entityId)
-        {
-            var body = _bodyMapper.Get(entityId);
-            _world.Remove(body.Bounds);
-        }
-
-        protected override void OnEntityChanged(int entityId)
-        {
-            base.OnEntityChanged(entityId);
-        }
-
         public override void Process(GameTime gameTime, int entityId) {
-          var body = _bodyMapper.Get(entityId);
+            var body = _bodyMapper.Get(entityId);
         }
 
-        public void Draw(GameTime gameTime)
-        {
+        public void Draw(GameTime gameTime) {
             foreach (Map map in _game.scene.SceneMaps) {
               map.Draw(_game.GameWindow.spriteBatch, _game.scene);
             }

@@ -1,5 +1,5 @@
 using System;
-using Kazaam.Objects;
+using Kazaam.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -41,23 +41,12 @@ namespace Kazaam.View {
         // This is convoluted, but this allows the user to set a default direction that the texture faces
         // The render component assumes that the texture faces right (X axis increases left to right in the engine)
         // so operate under that assumption.
-        if (body.FacingRight) {
-          effects = effects.HasFlag(SpriteEffects.FlipHorizontally) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-        } else {
-          effects = effects.HasFlag(SpriteEffects.FlipHorizontally) ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-        }
-
         Rectangle sourceRectangle = body.CurrentAnimation.CurrentRectangle;
         var transformMatrix = _game.scene.CameraManager.View;
         _game.GameWindow.spriteBatch.Begin(transformMatrix : transformMatrix, samplerState: SamplerState.PointClamp);
-
-        foreach (Hitbox hb in body.hitboxes) {
-          hb.Draw(_game.GameWindow.spriteBatch, _game.scene);
-        }
-
         _game.GameWindow.spriteBatch.Draw(
              renderComp.Texture,
-             new Vector2(body.Bounds.X * body.Scale, body.Bounds.Y * body.Scale),
+             new Vector2(body.Position.X * renderComp.Scale, body.Position.Y * renderComp.Scale),
              sourceRectangle,
              Color.White,
              0f,
@@ -67,7 +56,7 @@ namespace Kazaam.View {
              0f
           );
         _game.GameWindow.spriteBatch.End();
-      } catch (System.NullReferenceException e) {
+      } catch (NullReferenceException e) {
       }
     }
 
