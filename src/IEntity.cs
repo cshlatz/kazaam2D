@@ -3,5 +3,6 @@
 namespace Kazaam.System{
     public interface IEntity {
         Body Body {get; set;}
+        int Id { get; }
     }
 }
