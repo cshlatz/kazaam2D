@@ -1,7 +1,7 @@
 using Kazaam.Assets;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Kazaam.Objects {
+namespace Kazaam.Components {
   public class RenderComponent {
     public Texture2D Texture {get; set;}  
     public SpriteEffects Effects {get; set;}
