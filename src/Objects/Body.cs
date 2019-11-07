@@ -14,6 +14,7 @@ namespace Kazaam.Components {
 
   public class Body {
     public Vector2 Position { get; set; }
+    public Vector2 Rotation { get; set; }
     public float Scale { get; set; }
     public Texture2D Texture { get; set; }
     public Animation CurrentAnimation { get; set; }
@@ -21,7 +22,6 @@ namespace Kazaam.Components {
     public Dictionary<string, SoundEffect> sounds;
     public ObjectState<IEntity> state;
     public List<Hitbox> Hitboxes { get; set; }
-    public bool FacingRight { get; set; }
 
     public bool DebugDrawHitboxes { get; set; }
 
