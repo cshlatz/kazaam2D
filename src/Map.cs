@@ -1,4 +1,5 @@
-﻿using HumperWorld = Humper.World;
+﻿using Kazaam.Display;
+using HumperWorld = Humper.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Tiled;
@@ -24,7 +25,7 @@ namespace Kazaam.Universe
 
       public Scene scene;
 
-      public Texture2D background;
+      public Background Background { get; set; }
 
       public Vector2 StartingPosition;
 
@@ -42,15 +43,21 @@ namespace Kazaam.Universe
 
       public void Update(GameTime gameTime) {
         mapRenderer.Update(gameTime);
+        Background.Update(gameTime, new Vector2(100, 0));
       }
 
       public void Draw(SpriteBatch sb, Scene scene) {
         var newMatrix = scene.CameraManager.View * Matrix.CreateTranslation((offsetX * scene.CameraManager.Zoom), (offsetY * scene.CameraManager.Zoom), 0);
+
+        // Draw background
+        if (Background != null) {
+            sb.Begin(samplerState: SamplerState.LinearWrap); // Draw the background
+            sb.Draw(Background.Texture, new Vector2(scene.CameraManager.Viewport.X, scene.CameraManager.Viewport.Y), Background.Rectangle(scene.CameraManager.Viewport), Color.White, 0, Vector2.Zero, Background.Zoom, SpriteEffects.None, 1);
+            sb.End();
+        }
+
         // SamplerState.PointClamp prevents gaps between the tiles while rendering
-        sb.Begin(samplerState: SamplerState.PointClamp);
-        //sb.Draw(background, new Rectangle(0, 0, (int)scene.game.Resolution.X, (int)scene.game.Resolution.Y), Color.White);
-        sb.End();
-        sb.Begin(transformMatrix: newMatrix, samplerState: SamplerState.PointClamp);
+        sb.Begin(transformMatrix: newMatrix, samplerState: SamplerState.PointClamp); // Draw the map
         mapRenderer.Draw(newMatrix);
         sb.End();
       }

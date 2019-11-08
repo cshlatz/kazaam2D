@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Kazaam.View {
     public interface ICamera {
@@ -27,6 +28,12 @@ namespace Kazaam.View {
         public Matrix View {
             get {
                 return currentCamera.View;
+            }
+        }
+
+        public Viewport Viewport {
+            get {
+                return currentCamera.Viewport;
             }
         }
 

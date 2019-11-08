@@ -2,6 +2,7 @@
 using Kazaam.Components;
 using Kazaam.View;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
 using MonoGame.Extended.ViewportAdapters;
 
@@ -62,6 +63,12 @@ namespace Kazaam.View {
             return Vector2.Clamp(position,
                                  new Vector2(_viewportWidth / Zoom / 2, _viewportHeight / Zoom / 2),
                                  cameraMax);
+        }
+
+        public Viewport Viewport {
+            get {
+                return game.Graphics.Viewport;
+            }
         }
 
         public abstract void Update(GameTime gameTime);
