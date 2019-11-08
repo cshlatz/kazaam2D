@@ -1,4 +1,5 @@
 using HumperWorld = Humper.World;
+using Kazaam.Display;
 using Kazaam.Objects;
 using Kazaam.Universe;
 using Kazaam.Systems;
@@ -17,6 +18,8 @@ namespace Kazaam {
   public class Scene { 
     public Map Map {get; set;}
     public readonly XNAGame Game;
+
+    public Gui Gui {get; set;}
 
     public SceneWorld SceneWorld {get; set;}
 

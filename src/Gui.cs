@@ -1,3 +1,5 @@
+using Kazaam.Assets;
+
 using Myra;
 using Myra.Graphics2D.UI;
 
@@ -52,5 +54,10 @@ namespace Kazaam.Display {
     public Widget FindWidgetById(string id) {
       return project.Root.FindWidgetById(id);
     }
+
+    public void Load(AssetLoader loader, string type, string name) {
+        Project = (Project)loader.LoadAsset(type, name);
+    }
+
   }
 }
