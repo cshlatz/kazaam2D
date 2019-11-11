@@ -4,17 +4,20 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Kazaam.Display {
+
     public class Background {
         public Texture2D Texture { get; private set; }
         public Vector2 Offset { get; private set; }
         public Vector2 Speed { get; set; }
+        public Vector2 Direction { get; set; }
         public float Zoom { get; set; }
+        public SamplerState SamplerState { get; set; }
  
         private Viewport _viewport;
  
         //Calculate Rectangle dimensions, based on offset/viewport/zoom values
         public Rectangle Rectangle(Viewport viewport) {
-            return new Rectangle((int)(Offset.X), (int)(Offset.Y), (int)(viewport.Width / Zoom), (int)(viewport.Height / Zoom));
+            return new Rectangle((int)(Offset.X), (int)(Offset.Y), (int)(viewport.X / Zoom), (int)(viewport.Y / Zoom));
         }
  
         public Background(Sprite texture, Vector2 speed, float zoom)
@@ -25,12 +28,12 @@ namespace Kazaam.Display {
             Zoom = zoom;
         }
  
-        public void Update(GameTime gametime, Vector2 direction)
+        public void Update(GameTime gametime)
         {
             float elapsed = (float)gametime.ElapsedGameTime.TotalSeconds;
  
             //Calculate the distance to move our image, based on speed
-            Vector2 distance = direction * Speed * elapsed;       
+            Vector2 distance = Direction * Speed * elapsed;
  
             //Update our offset
             Offset += distance;

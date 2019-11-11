@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
+using System.Collections.Generic;
 
 namespace Kazaam.Universe
 {
@@ -25,13 +26,16 @@ namespace Kazaam.Universe
 
       public Scene scene;
 
-      public Background Background { get; set; }
+      // Backgrounds
+      public List<Background> Backgrounds { get; set; }
 
       public Vector2 StartingPosition;
 
       public HumperWorld HumperWorld {get; set;}
 
       public Map(TiledMap map, int tileWidth, int tileHeight, GraphicsDevice gd) {
+        // Initialize the background list
+        Backgrounds = new List<Background>();
         this.map = map;
         this.mapRenderer = new TiledMapRenderer(gd, map);
         width = map.Width * tileWidth;
@@ -43,16 +47,18 @@ namespace Kazaam.Universe
 
       public void Update(GameTime gameTime) {
         mapRenderer.Update(gameTime);
-        Background.Update(gameTime, new Vector2(100, 0));
+        foreach (Background bg in Backgrounds) {
+          bg.Update(gameTime);
+        }
       }
 
       public void Draw(SpriteBatch sb, Scene scene) {
         var newMatrix = scene.CameraManager.View * Matrix.CreateTranslation((offsetX * scene.CameraManager.Zoom), (offsetY * scene.CameraManager.Zoom), 0);
 
         // Draw background
-        if (Background != null) {
-            sb.Begin(samplerState: SamplerState.LinearWrap); // Draw the background
-            sb.Draw(Background.Texture, new Vector2(scene.CameraManager.Viewport.X, scene.CameraManager.Viewport.Y), Background.Rectangle(scene.CameraManager.Viewport), Color.White, 0, Vector2.Zero, Background.Zoom, SpriteEffects.None, 1);
+        foreach (Background bg in Backgrounds) {
+            sb.Begin(samplerState: bg?.SamplerState ?? null); // Draw the background
+            sb.Draw(bg.Texture, new Vector2(scene.CameraManager.Viewport.X, scene.CameraManager.Viewport.Y), bg.Rectangle(scene.CameraManager.Viewport), Color.White, 0, Vector2.Zero, bg.Zoom, SpriteEffects.None, 1);
             sb.End();
         }
 
