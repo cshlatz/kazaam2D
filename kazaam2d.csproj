@@ -134,6 +134,7 @@
     <Compile Include="src\Components\Collider.cs" />
     <Compile Include="src\ICollision.cs" />
     <Compile Include="src\GameWorld.cs" />
+    <Compile Include="src\Components\AnimationComponent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

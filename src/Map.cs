@@ -1,4 +1,5 @@
-﻿using Kazaam.Display;
+﻿using Kazaam.Components;
+using Kazaam.Display;
 using HumperWorld = Humper.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -42,7 +43,6 @@ namespace Kazaam.Universe
         height = map.Height * tileHeight;
         this.tileWidth = tileWidth;
         this.tileHeight = tileHeight;
-        //background = this.scene.game.Content.Load<Texture2D>("resources/bin/maps/surface/bg1");
       }
 
       public void Update(GameTime gameTime) {
@@ -56,16 +56,28 @@ namespace Kazaam.Universe
         var newMatrix = scene.CameraManager.View * Matrix.CreateTranslation((offsetX * scene.CameraManager.Zoom), (offsetY * scene.CameraManager.Zoom), 0);
 
         // Draw background
+        /*
         foreach (Background bg in Backgrounds) {
-            sb.Begin(samplerState: bg?.SamplerState ?? null); // Draw the background
-            sb.Draw(bg.Texture, new Vector2(scene.CameraManager.Viewport.X, scene.CameraManager.Viewport.Y), bg.Rectangle(scene.CameraManager.Viewport), Color.White, 0, Vector2.Zero, bg.Zoom, SpriteEffects.None, 1);
+            sb.Begin(samplerState: bg?.SamplerState ?? SamplerState.LinearWrap, sortMode: SpriteSortMode.FrontToBack); // Draw the background
+            sb.Draw(bg.Texture, new Vector2(scene.CameraManager.Viewport.X, scene.CameraManager.Viewport.Y), bg.Rectangle(scene.CameraManager.Viewport), Color.White, 0, Vector2.Zero, bg.Zoom, SpriteEffects.None, bg.LayerDepth);
             sb.End();
         }
+        */
 
         // SamplerState.PointClamp prevents gaps between the tiles while rendering
         sb.Begin(transformMatrix: newMatrix, samplerState: SamplerState.PointClamp); // Draw the map
         mapRenderer.Draw(newMatrix);
         sb.End();
+      }
+
+      public void AddBackground(Background bg) {
+        Backgrounds.Add(bg);
+        var entity = scene.CreateEntity();
+        var bgBody = new Body();
+        bgBody.Position = new Vector2(0, 0);
+        entity.Attach(bgBody);
+        entity.Attach(bg);
+        entity.Attach(new RenderComponent(bg.Texture));
       }
     } 
 }
