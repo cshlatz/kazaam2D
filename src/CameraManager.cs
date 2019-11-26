@@ -45,5 +45,11 @@ namespace Kazaam.View {
                 currentCamera.Zoom = value;
             }
         }
+
+        public Vector2 Position {
+            get {
+                return currentCamera.Position;
+            }
+        }
     }
 }
