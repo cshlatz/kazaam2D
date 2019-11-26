@@ -46,20 +46,22 @@ namespace Kazaam.View {
 
         public Matrix View {
             get {
-                return Matrix.CreateTranslation(
+                return
+                        Matrix.CreateTranslation(
                            - _internalCamera.Position.X,
                            - _internalCamera.Position.Y,
                            0) *
                        Matrix.CreateScale(
                            new Vector3(Zoom, Zoom, 1)) *
                        Matrix.CreateTranslation(
-                           new Vector3(_viewportWidth * 0.5f, _viewportHeight * 0.5f, 0));
+                           new Vector3(game.GameWindow.XResolution * 0.5f, game.GameWindow.YResolution * 0.5f, 0)) *
+                       Matrix.CreateScale(new Vector3(game.GameWindow.ResolutionScale.X, game.GameWindow.ResolutionScale.Y, 1.0f));
 
             }
         }
 
         public Vector2 CameraClamp(Vector2 position) {
-            var cameraMax = new Vector2(game.scene.Map.width - (_viewportWidth / Zoom / 2), game.scene.Map.height - (_viewportHeight / Zoom / 2));
+            var cameraMax = new Vector2(game.scene.Map.width * game.GameWindow.ResolutionScale.X - (_viewportWidth / Zoom / 2), game.scene.Map.height * game.GameWindow.ResolutionScale.Y - (_viewportHeight / Zoom / 2));
             return Vector2.Clamp(position,
                                  new Vector2(_viewportWidth / Zoom / 2, _viewportHeight / Zoom / 2),
                                  cameraMax);
@@ -68,6 +70,12 @@ namespace Kazaam.View {
         public Viewport Viewport {
             get {
                 return game.Graphics.Viewport;
+            }
+        }
+
+        public Vector2 Position {
+            get {
+                return _internalCamera.Position;
             }
         }
 

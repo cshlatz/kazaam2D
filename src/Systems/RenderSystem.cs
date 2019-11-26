@@ -47,11 +47,7 @@ namespace Kazaam.View {
                 // Draw background. If not a background, draw the object normally.
                 if (_backgroundMapper.Has(entity)) {
                     var background = _backgroundMapper.Get(entity);
-                    _game.GameWindow.spriteBatch.Draw(background.Texture.Texture, new Vector2(_game.scene.CameraManager.Viewport.X, _game.scene.CameraManager.Viewport.Y), background.Rectangle(_game.scene.CameraManager.Viewport), Color.White, 0, Vector2.Zero, background.Zoom, SpriteEffects.None, background.LayerDepth);
-                    /*
-                    _game.GameWindow.spriteBatch.Draw(background.Texture.Texture, background.RectangleLeft(), Color.White);
-                    _game.GameWindow.spriteBatch.Draw(background.Texture.Texture, background.RectangleRight(), Color.White);
-                    */
+                    _game.GameWindow.spriteBatch.Draw(background.Texture.Texture, new Vector2(_game.scene.CameraManager.Position.X - _game.scene.CameraManager.Viewport.Width / 2, _game.scene.CameraManager.Position.Y - _game.scene.CameraManager.Viewport.Height / 4), background.Rectangle(_game.scene.CameraManager.Viewport), Color.White, 0, Vector2.Zero, background.Zoom, SpriteEffects.None, background.LayerDepth);
                 } else {
                     DrawObject(body, sourceRectangle, renderComponent);
                 }

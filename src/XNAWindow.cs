@@ -24,6 +24,15 @@ namespace Kazaam.Display
         public int XResolution {get; private set;}
         public int YResolution {get; private set;}
 
+        public int VirtualWidth {get; private set;}
+        public int VirtualHeight {get; private set;}
+
+        public Vector2 ResolutionScale {
+            get {
+                return new Vector2((float)graphics.GraphicsDevice.Viewport.Width / (float)VirtualWidth, (float)graphics.GraphicsDevice.Viewport.Width / (float)VirtualWidth);
+            }
+        }
+
         public XNAWindow(Game game) {
           this.game = game;
           createGraphics(false);
@@ -44,6 +53,14 @@ namespace Kazaam.Display
           Window().PreferredBackBufferWidth = XResolution;
           Window().PreferredBackBufferHeight = YResolution;
           Window().ApplyChanges();
+        }
+
+        /// <summary>
+        /// Changes the virtual resolution of the game window.
+        /// </summary>
+        public void VirtualResolution(int x, int y) {
+          VirtualWidth = x;
+          VirtualHeight = y;
         }
 
         /// <summary>
