@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
 using MonoGame.Extended.ViewportAdapters;
+using System;
 
 namespace Kazaam.View {
     public abstract class Camera : ICamera {
@@ -16,6 +17,27 @@ namespace Kazaam.View {
 
         private readonly int _viewportWidth;
         private readonly int _viewportHeight;
+
+        private bool _clampToMap;
+        private Vector2 _clampRange;
+
+        public bool ClampToMap {
+            get {
+                return _clampToMap;
+            }
+            set {
+                _clampToMap = value;
+            }
+        }
+
+        public Vector2 CameraClampRange {
+            get {
+                return _clampRange;
+            }
+            set {
+                _clampRange = value;
+            }
+        }
 
         public Body CameraFocus {
             get {
@@ -60,8 +82,19 @@ namespace Kazaam.View {
             }
         }
 
+        /// <summary>
+        /// Clamps the camera to a specified range. If the ClampToMap field is set, the range will be dimensions of the active map.
+        /// Otherwise, it will use the Vector2 CameraClampRange. If CameraClampRange is not set, it will be unbounded and return the same position provided.
+        /// </summary>
         public Vector2 CameraClamp(Vector2 position) {
-            var cameraMax = new Vector2(game.scene.Map.width * game.GameWindow.ResolutionScale.X - (_viewportWidth / Zoom / 2), game.scene.Map.height * game.GameWindow.ResolutionScale.Y - (_viewportHeight / Zoom / 2));
+            // If the clamp variables aren't set, literally have the clamp value be unbounded.
+            var cameraMax = new Vector2(Int32.MaxValue, Int32.MaxValue);
+            if (_clampToMap) {
+                cameraMax = new Vector2(game.scene.Map.width * game.GameWindow.ResolutionScale.X - (_viewportWidth / Zoom / 2), game.scene.Map.height * game.GameWindow.ResolutionScale.Y - (_viewportHeight / Zoom / 2));
+            }
+            if (!_clampToMap && !_clampRange.IsNaN()) {
+                cameraMax = new Vector2(_clampRange.X / Zoom / 2, _clampRange.Y / Zoom / 2);
+            }
             return Vector2.Clamp(position,
                                  new Vector2(_viewportWidth / Zoom / 2, _viewportHeight / Zoom / 2),
                                  cameraMax);
