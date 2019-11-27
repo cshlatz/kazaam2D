@@ -84,7 +84,7 @@ namespace Kazaam.View {
 
         /// <summary>
         /// Clamps the camera to a specified range. If the ClampToMap field is set, the range will be dimensions of the active map.
-        /// Otherwise, it will use the Vector2 CameraClampRange. If CameraClampRange is not set, it will be unbounded and return the same position provided.
+        /// Otherwise, it will use the Vector2 CameraClampRange. If CameraClampRange is not set, it will be unbounded.
         /// </summary>
         public Vector2 CameraClamp(Vector2 position) {
             // If the clamp variables aren't set, literally have the clamp value be unbounded.
