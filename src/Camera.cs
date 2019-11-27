@@ -90,7 +90,7 @@ namespace Kazaam.View {
             // If the clamp variables aren't set, literally have the clamp value be unbounded.
             var cameraMax = new Vector2(Int32.MaxValue, Int32.MaxValue);
             if (_clampToMap) {
-                cameraMax = new Vector2(game.scene.Map.width * game.GameWindow.ResolutionScale.X - (_viewportWidth / Zoom / 2), game.scene.Map.height * game.GameWindow.ResolutionScale.Y - (_viewportHeight / Zoom / 2));
+                cameraMax = new Vector2(game.scene.Map.Width - (_viewportWidth / Zoom / 2), game.scene.Map.Height - (_viewportHeight / Zoom / 2));
             }
             if (!_clampToMap && !_clampRange.IsNaN()) {
                 cameraMax = new Vector2(_clampRange.X / Zoom / 2, _clampRange.Y / Zoom / 2);

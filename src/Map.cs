@@ -13,17 +13,59 @@ namespace Kazaam.Universe {
     /// </summary>
     public class Map : Objects.IDrawable {
         public TiledMap map;
+        public Scene scene;
 
-        private TiledMapRenderer mapRenderer;
+        private float _width;
+        private float _height;
+        private float _tileWidth;
+        private float _tileHeight;
 
-        public int width;
-        public int height;
-        public int tileWidth;
-        public int tileHeight;
+
+        /// <summary>
+        /// The width of the map in pixels. This takes into account the zoom and virtual resolution of the game.
+        /// The width of the map in game units is represented by the private _width field
+        /// </summary>
+        public float Width {
+            get {
+                return _width * scene.Game.GameWindow.ResolutionScale.X;
+            }
+            set {
+                _width = value;
+            }
+        }
+
+        public float Height {
+            get {
+                return _height * scene.Game.GameWindow.ResolutionScale.Y;
+            }
+            set {
+                _height = value;
+            }
+        }
+
+        public float TileWidth {
+            get {
+                return _tileWidth;
+            }
+            set {
+                _tileWidth = value;
+            }
+        }
+
+        public float TileHeight {
+            get {
+                return _tileHeight;
+            }
+            set {
+                _tileHeight = value;
+            }
+        }
+
+        private TiledMapRenderer _mapRenderer;
+
         public float offsetX;
         public float offsetY;
 
-        public Scene scene;
 
         // Backgrounds
         public List<Background> Backgrounds { get; set; }
@@ -36,15 +78,15 @@ namespace Kazaam.Universe {
             // Initialize the background list
             Backgrounds = new List<Background>();
             this.map = map;
-            this.mapRenderer = new TiledMapRenderer(gd, map);
-            width = map.Width * tileWidth;
-            height = map.Height * tileHeight;
-            this.tileWidth = tileWidth;
-            this.tileHeight = tileHeight;
+            _mapRenderer = new TiledMapRenderer(gd, map);
+            _width = map.Width * tileWidth;
+            _height = map.Height * tileHeight;
+            _tileWidth = tileWidth;
+            _tileHeight = tileHeight;
         }
 
         public void Update(GameTime gameTime) {
-            mapRenderer.Update(gameTime);
+            _mapRenderer.Update(gameTime);
             foreach (Background bg in Backgrounds) {
                 bg.Update(gameTime);
             }
@@ -53,7 +95,7 @@ namespace Kazaam.Universe {
         public void Draw(SpriteBatch sb, Scene scene) {
             var newMatrix = scene.CameraManager.View * Matrix.CreateTranslation((offsetX * scene.CameraManager.Zoom), (offsetY * scene.CameraManager.Zoom), 0);
             sb.Begin(transformMatrix: newMatrix, samplerState: SamplerState.PointClamp); // Draw the map
-            mapRenderer.Draw(newMatrix);
+            _mapRenderer.Draw(newMatrix);
             sb.End();
         }
 
