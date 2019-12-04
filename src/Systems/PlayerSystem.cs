@@ -21,6 +21,7 @@ namespace Kazaam.Objects {
     public override void Process(GameTime gameTime, int entityId) {
       var player = _playerMapper.Get(entityId)._player;
       var body = _bodyMapper.Get(entityId);
+      player.InputHandler.Update();
       player.HandleInput();
     }
   }
