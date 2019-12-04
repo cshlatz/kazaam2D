@@ -1,6 +1,5 @@
 ﻿using Kazaam.Assets;
 using Kazaam.Display;
-using Kazaam.Input;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
@@ -38,7 +37,6 @@ namespace Kazaam {
         InitializeEngine();
         InitializeWorld();
         InitializeLoaders();
-        InitializeInput();
       }
 
       public virtual void InitializeEngine() {
@@ -49,10 +47,6 @@ namespace Kazaam {
 
       public virtual void InitializeWorld() {
         scene.InitializeWorld();
-      }
-
-      public virtual void InitializeInput() {
-        InputManager.Initialize();
       }
 
       public virtual void InitializeLoaders() {
