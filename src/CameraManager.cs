@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Kazaam.Components;
 
 namespace Kazaam.View {
     public interface ICamera {
@@ -51,5 +52,18 @@ namespace Kazaam.View {
                 return currentCamera.Position;
             }
         }
+
+        public Body Focus {
+            get {
+                return currentCamera.CameraFocus;
+            }
+        }
+
+        public Vector2 Speed {
+            get {
+                return currentCamera.Speed;
+            }
+        }
+
     }
 }

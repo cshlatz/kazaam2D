@@ -9,6 +9,7 @@ namespace Kazaam.Display {
         public Sprite Texture { get; private set; }
         public Vector2 Offset { get; private set; }
         public Vector2 Speed { get; set; }
+        public float ParallaxFactor { get; set; }
         public Vector2 Direction { get; set; }
         public float Zoom { get; set; }
         public float LayerDepth { get; set; }
@@ -16,14 +17,14 @@ namespace Kazaam.Display {
         private Viewport _viewport;
 
         public Rectangle Rectangle(Viewport viewport) {
-            return new Rectangle((int)(Offset.X), (int)(Offset.Y), (int)(viewport.Width / Zoom), (int)(viewport.Height / Zoom));
+            return new Rectangle((int)(Offset.X), (int)(Offset.Y), (int)(Texture.Texture.Width), (int)(Texture.Texture.Height));
         }
 
-        public Background(Sprite texture, Vector2 speed, float zoom)
+        public Background(Sprite texture, float parallaxFactor, float zoom)
         {
             Texture = texture;
             Offset = Vector2.Zero;
-            Speed = speed;
+            ParallaxFactor = parallaxFactor;
             Zoom = zoom;
         }
  

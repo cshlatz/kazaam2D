@@ -21,6 +21,8 @@ namespace Kazaam.View {
         private bool _clampToMap;
         private Vector2 _clampRange;
 
+        private Vector2 _speed;
+
         public bool ClampToMap {
             get {
                 return _clampToMap;
@@ -109,6 +111,15 @@ namespace Kazaam.View {
         public Vector2 Position {
             get {
                 return _internalCamera.Position;
+            }
+        }
+
+        public Vector2 Speed {
+            get {
+                return _speed;
+            }
+            set {
+                _speed = value;
             }
         }
 

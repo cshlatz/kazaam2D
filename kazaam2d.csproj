@@ -99,7 +99,6 @@
     <Compile Include="src\ISound.cs" />
     <Compile Include="src\ITiledStrategy.cs" />
     <Compile Include="src\InputHandler.cs" />
-    <Compile Include="src\InputManager.cs" />
     <Compile Include="src\JsonFileStream.cs" />
     <Compile Include="src\Loaders\AnimationLoader.cs" />
     <Compile Include="src\Loaders\AssetLoader.cs" />

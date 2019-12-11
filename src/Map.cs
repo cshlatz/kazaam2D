@@ -89,11 +89,17 @@ namespace Kazaam.Universe {
             _mapRenderer.Update(gameTime);
             foreach (Background bg in Backgrounds) {
                 bg.Update(gameTime);
+                bg.Speed = scene.CameraManager.Speed * bg.ParallaxFactor;
             }
         }
 
         public void Draw(SpriteBatch sb, Scene scene) {
             var newMatrix = scene.CameraManager.View * Matrix.CreateTranslation((offsetX * scene.CameraManager.Zoom), (offsetY * scene.CameraManager.Zoom), 0);
+            sb.Begin(samplerState: SamplerState.LinearWrap); // Draw the map
+            foreach (Background bg in Backgrounds) {
+                sb.Draw(bg.Texture.Texture, new Rectangle(0, 0, scene.CameraManager.Viewport.Width, scene.CameraManager.Viewport.Height), bg.Rectangle(scene.CameraManager.Viewport), Color.White);
+            }
+            sb.End();
             sb.Begin(transformMatrix: newMatrix, samplerState: SamplerState.PointClamp); // Draw the map
             _mapRenderer.Draw(newMatrix);
             sb.End();

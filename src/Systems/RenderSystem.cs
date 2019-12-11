@@ -30,7 +30,7 @@ namespace Kazaam.View {
 
         public override void Draw(GameTime gameTime) {
             var transformMatrix = _game.scene.CameraManager.View;
-            _game.GameWindow.spriteBatch.Begin(transformMatrix : transformMatrix, samplerState: SamplerState.LinearWrap, sortMode: SpriteSortMode.FrontToBack);
+            _game.GameWindow.spriteBatch.Begin(transformMatrix : transformMatrix, samplerState: SamplerState.PointClamp, sortMode: SpriteSortMode.FrontToBack);
 
             foreach (var entity in ActiveEntities) {
                 // Every renderable object has these
@@ -47,7 +47,8 @@ namespace Kazaam.View {
                 // Draw background. If not a background, draw the object normally.
                 if (_backgroundMapper.Has(entity)) {
                     var background = _backgroundMapper.Get(entity);
-                    _game.GameWindow.spriteBatch.Draw(background.Texture.Texture, new Vector2(_game.scene.CameraManager.Position.X - _game.scene.CameraManager.Viewport.Width / 2, _game.scene.CameraManager.Position.Y - _game.scene.CameraManager.Viewport.Height / 4), background.Rectangle(_game.scene.CameraManager.Viewport), Color.White, 0, Vector2.Zero, background.Zoom, SpriteEffects.None, background.LayerDepth);
+                    //_game.GameWindow.spriteBatch.Draw(background.Texture.Texture, new Vector2(_game.scene.CameraManager.Position.X - _game.scene.CameraManager.Viewport.Width / 2, _game.scene.CameraManager.Position.Y - _game.scene.CameraManager.Viewport.Height / 4), background.Rectangle(_game.scene.CameraManager.Viewport), Color.White, 0, Vector2.Zero, background.Zoom, SpriteEffects.None, background.LayerDepth);
+                    //_game.GameWindow.spriteBatch.Draw(background.Texture.Texture, new Vector2(_game.scene.CameraManager.Position.X - _game.scene.CameraManager.Viewport.Width / 2, _game.scene.CameraManager.Position.Y - _game.scene.CameraManager.Viewport.Height / 2), background.Rectangle(_game.scene.CameraManager.Viewport), Color.White, 0, Vector2.Zero, background.Zoom, SpriteEffects.None, background.LayerDepth);
                 } else {
                     DrawObject(body, sourceRectangle, renderComponent);
                 }
