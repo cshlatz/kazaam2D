@@ -113,7 +113,7 @@ namespace Kazaam.Universe {
             bgBody.Position = new Vector2(0, 0);
             entity.Attach(bgBody);
             entity.Attach(bg);
-            entity.Attach(new RenderComponent(bg.Texture));
+            entity.Attach(new Renderer(bg.Texture));
         }
     } 
 }

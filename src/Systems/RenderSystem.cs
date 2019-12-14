@@ -13,19 +13,19 @@ namespace Kazaam.View {
         private readonly XNAGame _game;
 
         private ComponentMapper<Background> _backgroundMapper;
-        private ComponentMapper<RenderComponent> _renderMapper;
+        private ComponentMapper<Renderer> _renderMapper;
         private ComponentMapper<Body> _bodyMapper;
-        private ComponentMapper<AnimationComponent> _animationMapper;
+        private ComponentMapper<Animator> _animationMapper;
 
-        public RenderSystem(XNAGame game) : base(Aspect.One(typeof(RenderComponent))) {
+        public RenderSystem(XNAGame game) : base(Aspect.One(typeof(Renderer))) {
             _game = game;
         }
 
         public override void Initialize(IComponentMapperService mapperService) {
-            _animationMapper = mapperService.GetMapper<AnimationComponent>();
+            _animationMapper = mapperService.GetMapper<Animator>();
             _backgroundMapper = mapperService.GetMapper<Background>();
             _bodyMapper = mapperService.GetMapper<Body>();
-            _renderMapper = mapperService.GetMapper<RenderComponent>();
+            _renderMapper = mapperService.GetMapper<Renderer>();
         }
 
         public override void Draw(GameTime gameTime) {
@@ -58,7 +58,7 @@ namespace Kazaam.View {
             _game.GameWindow.spriteBatch.End();
         }
 
-        public void DrawObject(Body body, Rectangle sourceRectangle, RenderComponent renderComp) {
+        public void DrawObject(Body body, Rectangle sourceRectangle, Renderer renderComp) {
           try {
             SpriteEffects effects = renderComp.Effects;
             Color tint = renderComp.DisplayTint;

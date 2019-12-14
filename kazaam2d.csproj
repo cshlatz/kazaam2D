@@ -88,7 +88,7 @@
     <Compile Include="src\Background.cs" />
     <Compile Include="src\Components\PhysicsBody.cs" />
     <Compile Include="src\Components\PlayerComponent.cs" />
-    <Compile Include="src\Components\RenderComponent.cs" />
+    <Compile Include="src\Components\Renderer.cs" />
     <Compile Include="src\GameEntity.cs" />
     <Compile Include="src\Gui.cs" />
     <Compile Include="src\Hitbox.cs" />
@@ -132,9 +132,9 @@
     <Compile Include="src\IEntity.cs" />
     <Compile Include="src\Camera.cs" />
     <Compile Include="src\GameWorld.cs" />
-    <Compile Include="src\Components\AnimationComponent.cs" />
+    <Compile Include="src\Components\Animator.cs" />
     <Compile Include="src\Systems\ObjectSystem.cs" />
-    <Compile Include="src\Components\ObjectComponent.cs" />
+    <Compile Include="src\Components\GameObject.cs" />
     <Compile Include="src\IGameObject.cs" />
     <Compile Include="src\ICollisionStrategy.cs" />
   </ItemGroup>

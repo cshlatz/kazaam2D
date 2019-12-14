@@ -1,6 +1,6 @@
 using Kazaam.Objects;
 
-namespace Kazaam.Player {
+namespace Kazaam.Components{
   public class PlayerComponent {
     public IPlayer _player;
 
