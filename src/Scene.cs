@@ -18,6 +18,7 @@ namespace Kazaam {
   public class Scene { 
     public Map Map {get; set;}
     public readonly XNAGame Game;
+    public Song song;
 
     public Gui Gui {get; set;}
 
@@ -41,6 +42,7 @@ namespace Kazaam {
        SceneWorld = new WorldBuilder()
          .AddSystem(new WorldSystem(Game))
          .AddSystem(new PlayerSystem())
+         .AddSystem(new ObjectSystem())
          .AddSystem(new PhysicsSystem())
          .AddSystem(new RenderSystem(Game))
          .AddSystem(new UISystem(Game))

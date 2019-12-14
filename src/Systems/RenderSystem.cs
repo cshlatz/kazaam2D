@@ -61,7 +61,8 @@ namespace Kazaam.View {
         public void DrawObject(Body body, Rectangle sourceRectangle, RenderComponent renderComp) {
           try {
             SpriteEffects effects = renderComp.Effects;
-
+            Color tint = renderComp.DisplayTint;
+            if (tint == null) tint = Color.White;
             // This is convoluted, but this allows the user to set a default direction that the texture faces
             // The render component assumes that the texture faces right (X axis increases left to right in the engine)
             // so operate under that assumption.
@@ -70,7 +71,7 @@ namespace Kazaam.View {
                  renderComp.Texture,
                  new Vector2(body.Position.X * renderComp.Scale, body.Position.Y * renderComp.Scale),
                  sourceRectangle,
-                 Color.White,
+                 tint,
                  0f,
                  Vector2.Zero,
                  renderComp.Scale,

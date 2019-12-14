@@ -9,6 +9,7 @@ namespace Kazaam.Display {
         public Sprite Texture { get; private set; }
         public Vector2 Offset { get; private set; }
         public Vector2 Speed { get; set; }
+        public Vector2 ConstantSpeed { get; set; }
         public float ParallaxFactor { get; set; }
         public Vector2 Direction { get; set; }
         public float Zoom { get; set; }

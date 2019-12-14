@@ -90,6 +90,7 @@ namespace Kazaam.Universe {
             foreach (Background bg in Backgrounds) {
                 bg.Update(gameTime);
                 bg.Speed = scene.CameraManager.Speed * bg.ParallaxFactor;
+                bg.Speed = bg.Speed + bg.ConstantSpeed;
             }
         }
 

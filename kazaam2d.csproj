@@ -131,10 +131,12 @@
     <Compile Include="src\IPhysicsStrategy.cs" />
     <Compile Include="src\IEntity.cs" />
     <Compile Include="src\Camera.cs" />
-    <Compile Include="src\Components\Collider.cs" />
-    <Compile Include="src\ICollision.cs" />
     <Compile Include="src\GameWorld.cs" />
     <Compile Include="src\Components\AnimationComponent.cs" />
+    <Compile Include="src\Systems\ObjectSystem.cs" />
+    <Compile Include="src\Components\ObjectComponent.cs" />
+    <Compile Include="src\IGameObject.cs" />
+    <Compile Include="src\ICollisionStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

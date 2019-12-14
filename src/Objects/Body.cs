@@ -23,6 +23,10 @@ namespace Kazaam.Components {
       sounds = new Dictionary<string, SoundEffect>();
       Hitboxes = new List<Hitbox>();
     }
+
+    public void PlaySoundEffect(string effect) {
+        sounds[effect].Play();
+    }
   }
 
 }

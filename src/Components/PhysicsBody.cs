@@ -9,11 +9,6 @@ namespace Kazaam.Components {
         public IPhysicsStrategy PhysicsStrategy { get; set; }
 
         /// <summary>
-        /// A user defined script for how this object reacts to collisions
-        /// </summary>
-        public Collider Collider { get; set; }
-
-        /// <summary>
         /// The speed of the physics body in the game world
         /// </summary>
         public Vector2 Velocity { get; set; }
@@ -22,5 +17,10 @@ namespace Kazaam.Components {
         /// A flag for whether or not the physics object is in a grounded state
         /// </summary>
         public bool Grounded { get; set; }
+
+        /// <summary>
+        /// A user defined script for how this object is affected by physics
+        /// </summary>
+        public ICollisionStrategy CollisionStrategy { get; set; }
   }
 }
