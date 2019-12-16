@@ -87,7 +87,8 @@
     <Compile Include="src\Animation\AnimationFrame.cs" />
     <Compile Include="src\Background.cs" />
     <Compile Include="src\Components\PhysicsBody.cs" />
-    <Compile Include="src\Components\PlayerComponent.cs" />
+    <Compile Include="src\Components\Player.cs" />
+    <Compile Include="src\Components\IComponent.cs" />
     <Compile Include="src\Components\Renderer.cs" />
     <Compile Include="src\GameEntity.cs" />
     <Compile Include="src\Gui.cs" />
@@ -114,7 +115,6 @@
     <Compile Include="src\Music.cs" />
     <Compile Include="src\Namespaces.cs" />
     <Compile Include="src\ObjectState.cs" />
-    <Compile Include="src\Objects\Body.cs" />
     <Compile Include="src\Scene.cs" />
     <Compile Include="src\SoundManager.cs" />
     <Compile Include="src\Sprite.cs" />

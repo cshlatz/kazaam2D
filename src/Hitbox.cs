@@ -20,12 +20,12 @@ namespace Kazaam.Components {
     public class Hitbox {
         private Vector2 _position;
         private Vector2 _offset;
-        private Body _parent;
+        private GameObject _parent;
 
         /// <summary>
         /// The parent body of this hitbox. The position of the hitbox will be relative to the parent
         /// </summary>
-        public Body Parent { get {
+        public GameObject Parent { get {
             return _parent; 
         } set {
             _parent = value;

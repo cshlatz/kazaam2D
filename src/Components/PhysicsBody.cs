@@ -2,7 +2,7 @@ using Kazaam.Physics;
 using Microsoft.Xna.Framework;
 
 namespace Kazaam.Components {
-    public class PhysicsBody {
+    public class PhysicsBody : IComponent {
         /// <summary>
         /// A user defined script for how this object is affected by physics
         /// </summary>

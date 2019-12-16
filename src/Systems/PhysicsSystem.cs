@@ -22,7 +22,6 @@ namespace Kazaam.Systems {
       physics.PhysicsStrategy.Body = body;
       physics.PhysicsStrategy.PhysicsBody = physics;
       physics.PhysicsStrategy.Update(gameTime);
-
     }
   }
 }

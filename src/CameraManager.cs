@@ -53,7 +53,7 @@ namespace Kazaam.View {
             }
         }
 
-        public Body Focus {
+        public GameObject Focus {
             get {
                 return currentCamera.CameraFocus;
             }

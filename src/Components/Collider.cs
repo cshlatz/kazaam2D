@@ -1,8 +1,9 @@
 ﻿using Humper;
+using Kazaam.Physics;
 using Microsoft.Xna.Framework;
 
 namespace Kazaam.Components {
-    public class Collider {
+    public class Collider : IComponent {
         /// <summary>
         /// The bounds of the collider
         /// </summary>
@@ -21,6 +22,6 @@ namespace Kazaam.Components {
         /// <summary>
         /// The script that is run when a collision occurs with this object
         /// </summary>
-        public Kazaam.Physics.ICollision Collision { get; set; }
+        public ICollisionStrategy OnCollision { get; set; }
     }
 }

@@ -1,10 +1,9 @@
-﻿using Kazaam.Objects;
+﻿using Microsoft.Xna.Framework;
 
 namespace Kazaam.Components {
-    public class GameObject {
-        public IGameObject _gameObject;
-        public GameObject(IGameObject gameObject) {
-            _gameObject = gameObject;
-        }
+    public class GameObject : IComponent {
+        public Vector2 Position { get; set; }
+        public Vector2 Rotation { get; set; }
+        public float Scale { get; set; }
     }
 }

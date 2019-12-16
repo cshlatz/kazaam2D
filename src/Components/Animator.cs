@@ -1,8 +1,7 @@
 ﻿using Kazaam.Animate;
 using System.Collections.Generic;
 namespace Kazaam.Components {
-    public class Animator {
-
+    public class Animator : IComponent {
         private Animation _currentAnimation;
 
         /// <summary>

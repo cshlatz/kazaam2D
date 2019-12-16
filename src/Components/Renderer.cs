@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Kazaam.Components {
-    public class Renderer {
+    public class Renderer : IComponent {
         public Texture2D Texture {get; set;}
         public SpriteEffects Effects {get; set;}
         public float Scale {get; set;}
