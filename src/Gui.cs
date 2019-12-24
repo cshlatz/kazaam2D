@@ -5,19 +5,17 @@ using Myra.Graphics2D.UI;
 
 namespace Kazaam.Display {
   public class Gui {
-    private readonly Desktop desktop;
     private Project project;
     private Grid grid;
     private bool Active;
 
     public Gui(XNAGame game) {
-      desktop = new Desktop();
       MyraEnvironment.Game = game;
     }
 
     public void Render() {
       if (Active) {
-        desktop.Render();
+        Desktop.Render();
       }
     }
 
@@ -37,7 +35,7 @@ namespace Kazaam.Display {
     }
 
     public void Add(Widget item) {
-      desktop.Widgets.Add(item);
+      Desktop.Widgets.Add(item);
     }
 
     public void Toggle() {

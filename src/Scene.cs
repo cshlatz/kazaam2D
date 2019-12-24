@@ -42,10 +42,8 @@ namespace Kazaam {
        SceneWorld = new WorldBuilder()
          .AddSystem(new WorldSystem(Game))
          .AddSystem(new PlayerSystem())
-         .AddSystem(new ObjectSystem())
          .AddSystem(new PhysicsSystem())
          .AddSystem(new RenderSystem(Game))
-         .AddSystem(new UISystem(Game))
          .Build();
       SceneWorld.Initialize();
     }
