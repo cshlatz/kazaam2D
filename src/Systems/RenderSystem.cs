@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework.Graphics;
 
 using MonoGame.Extended.Entities;
 using MonoGame.Extended.Entities.Systems;
-using IDrawable = Kazaam.Objects.IDrawable;
 
 namespace Kazaam.View {
     public class RenderSystem : EntityDrawSystem {

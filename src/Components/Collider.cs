@@ -1,13 +1,14 @@
-﻿using Humper;
-using Kazaam.Physics;
+﻿using Kazaam.Physics;
+using Humper;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace Kazaam.Components {
     public class Collider : IComponent {
         /// <summary>
         /// The bounds of the collider
         /// </summary>
-        public IBox Bounds { get; set; }
+        public List<IBox> Bounds { get; set; }
 
         /// <summary>
         /// The position of the collider in the game world

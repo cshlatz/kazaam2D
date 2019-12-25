@@ -109,7 +109,7 @@ namespace Kazaam.Universe {
         public void AddBackground(Background bg) {
             Backgrounds.Add(bg);
             var entity = scene.CreateEntity();
-            var bgBody = new Body();
+            var bgBody = new GameObject();
             bgBody.Position = new Vector2(0, 0);
             entity.Attach(bgBody);
             entity.Attach(bg);
