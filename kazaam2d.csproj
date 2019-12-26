@@ -102,7 +102,7 @@
     <Compile Include="src\IDrawable.cs" />
     <Compile Include="src\IDynamic.cs" />
     <Compile Include="src\IEntity.cs" />
-    <Compile Include="src\IGameState.cs" />
+    <Compile Include="src\GameState.cs" />
     <Compile Include="src\IPhysicsStrategy.cs" />
     <Compile Include="src\IPlayer.cs" />
     <Compile Include="src\ISound.cs" />

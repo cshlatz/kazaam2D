@@ -10,9 +10,9 @@ namespace Kazaam {
     /// The main game engine class that handles the game loop, physics updates and rendering.
     /// </summary>
     public class XNAGame : Game {
-      private Stack<IGameState> _states;
+      private Stack<GameState> _states;
 
-      public Stack<IGameState> States {
+      public Stack<GameState> States {
         get {
             return _states;
         }
@@ -41,7 +41,7 @@ namespace Kazaam {
 
       public virtual void InitializeEngine() {
         IsFixedTimeStep = true; // Caps the engine at 60 FPS.
-        _states = new Stack<IGameState>();
+        _states = new Stack<GameState>();
         scene = new Scene(this);
       }
 
