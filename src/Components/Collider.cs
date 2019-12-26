@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Kazaam.Components {
     public class Collider : IComponent {
         /// <summary>
-        /// The bounds of the collider
+        /// A list that contains all bounds of this entity.
         /// </summary>
         public List<IBox> Bounds { get; set; }
 
