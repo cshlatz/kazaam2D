@@ -11,11 +11,11 @@ namespace Kazaam.Universe
     public class WorldSystem : EntityProcessingSystem, IDrawSystem {
         private readonly World _world;
         private ComponentMapper<Transform2> _transformMapper;
-        private ComponentMapper<Body> _bodyMapper;
+        private ComponentMapper<GameObject> _gameObjectMapper;
         private XNAGame _game;
 
         public WorldSystem(XNAGame game)
-            : base(Aspect.All(typeof(Body)))
+            : base(Aspect.All(typeof(GameObject)))
         {
             _world = new World(120 * 32, 120 * 32);
             _game = game;
@@ -23,7 +23,7 @@ namespace Kazaam.Universe
 
         public override void Initialize(IComponentMapperService mapperService)
         {
-            _bodyMapper = mapperService.GetMapper<Body>();
+            _gameObjectMapper = mapperService.GetMapper<GameObject>();
         }
 
         protected override void OnEntityAdded(int entityId)
@@ -41,7 +41,7 @@ namespace Kazaam.Universe
         }
 
         public override void Process(GameTime gameTime, int entityId) {
-            var body = _bodyMapper.Get(entityId);
+            var gameObject = _gameObjectMapper.Get(entityId);
         }
 
         public void Draw(GameTime gameTime) {

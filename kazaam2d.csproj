@@ -79,21 +79,31 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="Myra">
-      <HintPath>..\packages\Myra.0.9.7.185\lib\net45\Myra.dll</HintPath>
+      <HintPath>..\..\..\Projects\kazaam\packages\Myra.0.9.4.180\lib\net45\Myra.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\Animation\Animation.cs" />
     <Compile Include="src\Animation\AnimationFrame.cs" />
     <Compile Include="src\Background.cs" />
+    <Compile Include="src\Camera.cs" />
+    <Compile Include="src\CameraManager.cs" />
+    <Compile Include="src\Components\Animator.cs" />
+    <Compile Include="src\Components\Collider.cs" />
+    <Compile Include="src\Components\GameObject.cs" />
+    <Compile Include="src\Components\IComponent.cs" />
     <Compile Include="src\Components\PhysicsBody.cs" />
-    <Compile Include="src\Components\PlayerComponent.cs" />
-    <Compile Include="src\Components\RenderComponent.cs" />
+    <Compile Include="src\Components\Player.cs" />
+    <Compile Include="src\Components\Renderer.cs" />
+    <Compile Include="src\GameWorld.cs" />
     <Compile Include="src\Gui.cs" />
     <Compile Include="src\Hitbox.cs" />
+    <Compile Include="src\ICollisionStrategy.cs" />
     <Compile Include="src\IDrawable.cs" />
     <Compile Include="src\IDynamic.cs" />
+    <Compile Include="src\IEntity.cs" />
     <Compile Include="src\IGameState.cs" />
+    <Compile Include="src\IPhysicsStrategy.cs" />
     <Compile Include="src\IPlayer.cs" />
     <Compile Include="src\ISound.cs" />
     <Compile Include="src\ITiledStrategy.cs" />
@@ -113,7 +123,6 @@
     <Compile Include="src\Music.cs" />
     <Compile Include="src\Namespaces.cs" />
     <Compile Include="src\ObjectState.cs" />
-    <Compile Include="src\Objects\Body.cs" />
     <Compile Include="src\Scene.cs" />
     <Compile Include="src\SoundManager.cs" />
     <Compile Include="src\Sprite.cs" />
@@ -125,14 +134,6 @@
     <Compile Include="src\XNAGame.cs" />
     <Compile Include="src\XNAWindow.cs" />
     <Compile Include="src\XNBFileStream.cs" />
-    <Compile Include="src\CameraManager.cs" />
-    <Compile Include="src\IPhysicsStrategy.cs" />
-    <Compile Include="src\IEntity.cs" />
-    <Compile Include="src\Camera.cs" />
-    <Compile Include="src\GameWorld.cs" />
-    <Compile Include="src\Components\AnimationComponent.cs" />
-    <Compile Include="src\Components\ObjectComponent.cs" />
-    <Compile Include="src\ICollisionStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

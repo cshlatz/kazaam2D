@@ -65,13 +65,21 @@ namespace Kazaam {
 
       protected override void Draw(GameTime gameTime) {
         base.Draw(gameTime);
+        if (States.Count > 0) {
+            States.Peek().Draw(gameTime);
+        } else {
+            Log("Game State stack is empty in Draw");
+        }
         GraphicsDevice.Clear(Color.Black);
-        States.Peek().Draw(gameTime);
       }
 
       protected override void Update(GameTime gameTime) {
         base.Update(gameTime);
-        States.Peek().Update(gameTime);
+        if (States.Count > 0) {
+            States.Peek().Update(gameTime);
+        } else {
+            Log("Game State stack is empty in Update");
+        }
       }
 
       public static void Log(string message) {

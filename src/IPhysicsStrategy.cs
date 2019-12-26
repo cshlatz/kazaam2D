@@ -1,7 +1,5 @@
 ﻿using Kazaam.Components;
-using Humper;
 using Microsoft.Xna.Framework;
-using Kazaam.Objects;
 
 namespace Kazaam.Physics {
     /// <summary>
@@ -9,7 +7,7 @@ namespace Kazaam.Physics {
     /// </summary>
     public interface IPhysicsStrategy {
         void Update(GameTime gameTime);
-        Body Body { get; set; }
+        GameObject GameObject { get; set; }
         PhysicsBody PhysicsBody { get; set; }
         Hitbox PhysicsTarget { get; set; }
     }

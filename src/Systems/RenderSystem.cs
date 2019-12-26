@@ -6,26 +6,25 @@ using Microsoft.Xna.Framework.Graphics;
 
 using MonoGame.Extended.Entities;
 using MonoGame.Extended.Entities.Systems;
-using IDrawable = Kazaam.Objects.IDrawable;
 
 namespace Kazaam.View {
     public class RenderSystem : EntityDrawSystem {
         private readonly XNAGame _game;
 
         private ComponentMapper<Background> _backgroundMapper;
-        private ComponentMapper<RenderComponent> _renderMapper;
-        private ComponentMapper<Body> _bodyMapper;
-        private ComponentMapper<AnimationComponent> _animationMapper;
+        private ComponentMapper<Renderer> _renderMapper;
+        private ComponentMapper<GameObject> _gameObjectMapper;
+        private ComponentMapper<Animator> _animationMapper;
 
-        public RenderSystem(XNAGame game) : base(Aspect.One(typeof(RenderComponent))) {
+        public RenderSystem(XNAGame game) : base(Aspect.One(typeof(Renderer))) {
             _game = game;
         }
 
         public override void Initialize(IComponentMapperService mapperService) {
-            _animationMapper = mapperService.GetMapper<AnimationComponent>();
+            _animationMapper = mapperService.GetMapper<Animator>();
             _backgroundMapper = mapperService.GetMapper<Background>();
-            _bodyMapper = mapperService.GetMapper<Body>();
-            _renderMapper = mapperService.GetMapper<RenderComponent>();
+            _gameObjectMapper = mapperService.GetMapper<GameObject>();
+            _renderMapper = mapperService.GetMapper<Renderer>();
         }
 
         public override void Draw(GameTime gameTime) {
@@ -34,7 +33,7 @@ namespace Kazaam.View {
 
             foreach (var entity in ActiveEntities) {
                 // Every renderable object has these
-                var body = _bodyMapper.Get(entity);
+                var gameObject = _gameObjectMapper.Get(entity);
                 var renderComponent = _renderMapper.Get(entity);
 
                 Rectangle sourceRectangle = new Rectangle();
@@ -50,7 +49,7 @@ namespace Kazaam.View {
                     //_game.GameWindow.spriteBatch.Draw(background.Texture.Texture, new Vector2(_game.scene.CameraManager.Position.X - _game.scene.CameraManager.Viewport.Width / 2, _game.scene.CameraManager.Position.Y - _game.scene.CameraManager.Viewport.Height / 4), background.Rectangle(_game.scene.CameraManager.Viewport), Color.White, 0, Vector2.Zero, background.Zoom, SpriteEffects.None, background.LayerDepth);
                     //_game.GameWindow.spriteBatch.Draw(background.Texture.Texture, new Vector2(_game.scene.CameraManager.Position.X - _game.scene.CameraManager.Viewport.Width / 2, _game.scene.CameraManager.Position.Y - _game.scene.CameraManager.Viewport.Height / 2), background.Rectangle(_game.scene.CameraManager.Viewport), Color.White, 0, Vector2.Zero, background.Zoom, SpriteEffects.None, background.LayerDepth);
                 } else {
-                    DrawObject(body, sourceRectangle, renderComponent);
+                    DrawObject(gameObject, sourceRectangle, renderComponent);
                 }
             }
 
@@ -58,7 +57,7 @@ namespace Kazaam.View {
             _game.GameWindow.spriteBatch.End();
         }
 
-        public void DrawObject(Body body, Rectangle sourceRectangle, RenderComponent renderComp) {
+        public void DrawObject(GameObject gameObject, Rectangle sourceRectangle, Renderer renderComp) {
           try {
             SpriteEffects effects = renderComp.Effects;
             Color tint = renderComp.DisplayTint;
@@ -69,7 +68,7 @@ namespace Kazaam.View {
 
             _game.GameWindow.spriteBatch.Draw(
                  renderComp.Texture,
-                 new Vector2(body.Position.X * renderComp.Scale, body.Position.Y * renderComp.Scale),
+                 new Vector2(gameObject.Position.X * renderComp.Scale, gameObject.Position.Y * renderComp.Scale),
                  sourceRectangle,
                  tint,
                  0f,

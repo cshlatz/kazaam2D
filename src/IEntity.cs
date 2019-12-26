@@ -2,7 +2,7 @@
 
 namespace Kazaam.System{
     public interface IEntity {
-        Body Body {get; set;}
+        GameObject GameObject {get; set;}
         int Id { get; }
     }
 }

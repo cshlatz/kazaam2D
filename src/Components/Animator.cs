@@ -1,8 +1,7 @@
 ﻿using Kazaam.Animate;
 using System.Collections.Generic;
 namespace Kazaam.Components {
-    public class AnimationComponent {
-
+    public class Animator : IComponent {
         private Animation _currentAnimation;
 
         /// <summary>
@@ -22,7 +21,7 @@ namespace Kazaam.Components {
             }
         }}
 
-        public AnimationComponent() {
+        public Animator() {
             Animations = new Dictionary<string, Animation>();
         }
     }

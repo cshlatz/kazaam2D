@@ -12,7 +12,7 @@ namespace Kazaam.View {
         protected readonly OrthographicCamera _internalCamera;
         protected readonly XNAGame game;
 
-        private Body _cameraFocus;
+        private GameObject _cameraFocus;
         private float _zoom;
 
         private readonly int _viewportWidth;
@@ -41,7 +41,7 @@ namespace Kazaam.View {
             }
         }
 
-        public Body CameraFocus {
+        public GameObject CameraFocus {
             get {
                 return _cameraFocus;
             }

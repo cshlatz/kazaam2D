@@ -1,5 +1,4 @@
-namespace Kazaam.Objects {
-  public interface IComponent {
-    
-  }
+namespace Kazaam.Components {
+    public interface IComponent {
+    }
 }
