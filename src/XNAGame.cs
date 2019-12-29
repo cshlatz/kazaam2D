@@ -46,7 +46,7 @@ namespace Kazaam {
       }
 
       public virtual void InitializeWorld() {
-        scene.InitializeWorld();
+        scene.Initialize();
       }
 
       public virtual void InitializeLoaders() {
@@ -83,7 +83,7 @@ namespace Kazaam {
       }
 
       public static void Log(string message) {
-        Console.WriteLine(message);
+          Console.WriteLine(message);
       }
     }
 

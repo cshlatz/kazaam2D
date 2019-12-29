@@ -38,14 +38,18 @@ namespace Kazaam {
     /// <summary>
     /// The default implementation of an ECS world
     /// </summary>
-    public void InitializeWorld() {
-       SceneWorld = new WorldBuilder()
-         .AddSystem(new WorldSystem(Game))
-         .AddSystem(new PlayerSystem())
-         .AddSystem(new PhysicsSystem())
-         .AddSystem(new RenderSystem(Game))
-         .Build();
+    public void Initialize() {
+      //Initialize the ECS
+      SceneWorld = new WorldBuilder()
+        .AddSystem(new WorldSystem(Game))
+        .AddSystem(new PlayerSystem())
+        .AddSystem(new PhysicsSystem())
+        .AddSystem(new RenderSystem(Game))
+        .Build();
       SceneWorld.Initialize();
+
+      // Initialize the Humper GameWorld
+      CollisionBodies = new GameWorld(64000, 64000);
     }
 
     public Entity CreateEntity() {
