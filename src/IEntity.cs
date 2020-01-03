@@ -1,7 +1,8 @@
-﻿namespace Kazaam.System{
-    public interface IEntity {
-        int Id { get; }
+﻿using Kazaam.Components;
 
-        T GetComponent<T>();
+namespace Kazaam.System{
+    public interface IEntity {
+        GameObject GameObject {get; set;}
+        int Id { get; }
     }
 }

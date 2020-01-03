@@ -6,11 +6,13 @@ using MonoGame.Extended.Tiled.Renderers;
 using System.Collections.Generic;
 using System;
 
-namespace Kazaam.Assets {
+namespace Kazaam.Assets
+{
+
     /// <summary>
     /// A loader that creates Map objects from Tiled map files.
     /// </summary>
-  public class MapLoader : IContentLoader {
+    public class MapLoader : IContentLoader {
     public Map map;
     public TiledMap tiledMap;
     private XNAGame game;

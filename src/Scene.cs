@@ -16,50 +16,24 @@ namespace Kazaam {
   /// A collection of Kazaam.Universe objects that define a world in the engine.
   /// </summary>
   public class Scene { 
-    public readonly XNAGame Game;
-    public Scene(XNAGame game) {
-      this.Game = game;
-      CameraManager = new CameraManager();
-    }
-
-    /// <summary>
-    /// The scene's active map
-    /// </summary>
     public Map Map {get; set;}
-
-    /// <summary>
-    /// The currently active song in this scene
-    /// </summary>
+    public readonly XNAGame Game;
     public Song song;
 
-    /// <summary>
-    /// The main GUI displayed in this scene
-    /// </summary>
     public Gui Gui {get; set;}
 
-    /// <summary>
-    /// The ECS World
-    /// </summary>
     public SceneWorld SceneWorld {get; set;}
 
     // Camera
     public CameraManager CameraManager {get; set;}
 
-    /// <summary>
-    /// All bodies in the world that have Humper collision detection
-    /// </summary>
+    public Scene(XNAGame game) {
+      this.Game = game;
+      CameraManager = new CameraManager();
+    }
+
     public GameWorld CollisionBodies;
-
-    /// <summary>
-    /// If a scene contains multiple Tiled maps, a list that contains all maps to be used by the scene
-    /// </summary>
     public List<Map> SceneMaps {get; set;}
-
-    /// <summary>
-    /// A description of the scene
-    /// </summary>
-    public string Name { get; set; }
-
 
     /// <summary>
     /// The default implementation of an ECS world
