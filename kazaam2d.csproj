@@ -103,6 +103,7 @@
     <Compile Include="src\IDynamic.cs" />
     <Compile Include="src\IEntity.cs" />
     <Compile Include="src\GameState.cs" />
+    <Compile Include="src\IContent.cs" />
     <Compile Include="src\IPhysicsStrategy.cs" />
     <Compile Include="src\IPlayer.cs" />
     <Compile Include="src\ISound.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="src\Loaders\IContentLoader.cs" />
     <Compile Include="src\Loaders\ITypeLoader.cs" />
     <Compile Include="src\Loaders\MapLoader.cs" />
+    <Compile Include="src\Loaders\SceneLoader.cs" />
     <Compile Include="src\Loaders\SongLoader.cs" />
     <Compile Include="src\Loaders\SoundLoader.cs" />
     <Compile Include="src\Loaders\SpriteLoader.cs" />

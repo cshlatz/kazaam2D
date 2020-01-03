@@ -49,6 +49,9 @@ namespace Kazaam {
         scene.Initialize();
       }
 
+      /// <summary>
+      /// Load the default loaders used in every Kazaam game.
+      /// </summary>
       public virtual void InitializeLoaders() {
         // Json Asset loader
         jsonLoader = new AssetLoader(this, new JsonFileStream());

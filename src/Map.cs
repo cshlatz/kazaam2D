@@ -11,7 +11,7 @@ namespace Kazaam.Universe {
     /// <summary>
     /// A representation of the engine world.
     /// </summary>
-    public class Map : Objects.IDrawable {
+    public class Map : IContent {
         public TiledMap map;
         public Scene scene;
 
