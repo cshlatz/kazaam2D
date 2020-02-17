@@ -6,12 +6,6 @@ namespace Kazaam {
     /// A representation of the current state of the game, such as active gameplay or paused gameplay.
     /// </summary>
     public abstract class GameState {
-        public XNAGame Game { get; set; }
-
-        public virtual void Init(XNAGame game) {
-            Game = game;
-        }
-
         public virtual void Cleanup() {
 
         }

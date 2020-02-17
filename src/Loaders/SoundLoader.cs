@@ -1,10 +1,12 @@
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
 
 namespace Kazaam.Assets {
-  public class SoundLoader : IContentLoader {
-    public object Load(XNAGame game, string contentPath) {
-      SoundEffect sound = game.Content.Load<SoundEffect>(contentPath);
-      return sound;
+    public class SoundLoader : IContentLoader {
+        public ContentManager Content { get; set; }
+        public object Load(string contentPath) {
+            SoundEffect sound = Content.Load<SoundEffect>(contentPath);
+            return sound;
+        }
     }
-  }
 }

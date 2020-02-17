@@ -1,11 +1,13 @@
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Kazaam.Assets {
-  public class SpriteLoader : IContentLoader {
-    public object Load(XNAGame game, string contentPath) {
-      Texture2D texture = game.Content.Load<Texture2D>(contentPath);
-      var sprite = new Sprite(texture);
-      return sprite;
+    public class SpriteLoader : IContentLoader {
+        public ContentManager Content { get; set; }
+        public object Load(string contentPath) {
+            Texture2D texture = Content.Load<Texture2D>(contentPath);
+            var sprite = new Sprite(texture);
+            return sprite;
+        }
     }
-  }
 }

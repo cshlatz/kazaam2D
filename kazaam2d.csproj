@@ -129,7 +129,6 @@
     <Compile Include="src\Systems\PhysicsSystem.cs" />
     <Compile Include="src\Systems\PlayerSystem.cs" />
     <Compile Include="src\Systems\RenderSystem.cs" />
-    <Compile Include="src\Systems\WorldSystem.cs" />
     <Compile Include="src\Tags.cs" />
     <Compile Include="src\XNAGame.cs" />
     <Compile Include="src\XNAWindow.cs" />

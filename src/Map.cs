@@ -7,19 +7,29 @@ using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
 using System.Collections.Generic;
 
-namespace Kazaam.Universe {
+namespace Kazaam {
     /// <summary>
     /// A representation of the engine world.
     /// </summary>
-    public class Map : Objects.IDrawable {
+    public class Map {
         public TiledMap map;
-        public Scene scene;
 
         private float _width;
         private float _height;
         private float _tileWidth;
         private float _tileHeight;
 
+        private TiledMapRenderer _renderer;
+        private Scene _scene;
+        public Scene Scene {
+            get {
+                return _scene;
+            }
+            set {
+                _scene = value;
+                _renderer = new TiledMapRenderer(_scene.Graphics, this.map);
+            }
+        }
 
         /// <summary>
         /// The width of the map in pixels. This takes into account the zoom and virtual resolution of the game.
@@ -27,7 +37,7 @@ namespace Kazaam.Universe {
         /// </summary>
         public float Width {
             get {
-                return _width * scene.Game.GameWindow.ResolutionScale.X;
+                return _width * Scene.ResolutionScale.X;
             }
             set {
                 _width = value;
@@ -36,7 +46,7 @@ namespace Kazaam.Universe {
 
         public float Height {
             get {
-                return _height * scene.Game.GameWindow.ResolutionScale.Y;
+                return _height * Scene.ResolutionScale.Y;
             }
             set {
                 _height = value;
@@ -61,11 +71,8 @@ namespace Kazaam.Universe {
             }
         }
 
-        private TiledMapRenderer _mapRenderer;
-
         public float offsetX;
         public float offsetY;
-
 
         // Backgrounds
         public List<Background> Backgrounds { get; set; }
@@ -74,11 +81,10 @@ namespace Kazaam.Universe {
 
         public HumperWorld HumperWorld {get; set;}
 
-        public Map(TiledMap map, int tileWidth, int tileHeight, GraphicsDevice gd) {
+        public Map(TiledMap map, int tileWidth, int tileHeight) {
             // Initialize the background list
             Backgrounds = new List<Background>();
             this.map = map;
-            _mapRenderer = new TiledMapRenderer(gd, map);
             _width = map.Width * tileWidth;
             _height = map.Height * tileHeight;
             _tileWidth = tileWidth;
@@ -86,34 +92,35 @@ namespace Kazaam.Universe {
         }
 
         public void Update(GameTime gameTime) {
-            _mapRenderer.Update(gameTime);
+            _renderer.Update(gameTime);
             foreach (Background bg in Backgrounds) {
                 bg.Update(gameTime);
-                bg.Speed = scene.CameraManager.Speed * bg.ParallaxFactor;
+                bg.Speed = Scene.CameraManager.Speed * bg.ParallaxFactor;
                 bg.Speed = bg.Speed + bg.ConstantSpeed;
             }
         }
 
-        public void Draw(SpriteBatch sb, Scene scene) {
-            var newMatrix = scene.CameraManager.View * Matrix.CreateTranslation((offsetX * scene.CameraManager.Zoom), (offsetY * scene.CameraManager.Zoom), 0);
-            sb.Begin(samplerState: SamplerState.LinearWrap); // Draw the map
-            foreach (Background bg in Backgrounds) {
-                sb.Draw(bg.Texture.Texture, new Rectangle(0, 0, scene.CameraManager.Viewport.Width, scene.CameraManager.Viewport.Height), bg.Rectangle(scene.CameraManager.Viewport), Color.White);
-            }
-            sb.End();
-            sb.Begin(transformMatrix: newMatrix, samplerState: SamplerState.PointClamp); // Draw the map
-            _mapRenderer.Draw(newMatrix);
-            sb.End();
-        }
-
         public void AddBackground(Background bg) {
             Backgrounds.Add(bg);
-            var entity = scene.CreateEntity();
+            var entity = Scene.CreateEntity();
             var bgBody = new GameObject();
             bgBody.Position = new Vector2(0, 0);
             entity.Attach(bgBody);
             entity.Attach(bg);
             entity.Attach(new Renderer(bg.Texture));
         }
-    } 
+
+        public void Draw(GameTime gameTime) {
+            var newMatrix = Scene.CameraManager.View; //* Matrix.CreateTranslation((offsetX * Scene.CameraManager.Zoom), (offsetY * Scene.CameraManager.Zoom), 0);
+            Scene.XNAWindow.spriteBatch.Begin(samplerState: SamplerState.LinearWrap); // Draw the map
+            foreach (Background bg in Backgrounds) {
+                Scene.XNAWindow.spriteBatch.Draw(bg.Texture.Texture, new Rectangle(0, 0, Scene.CameraManager.Viewport.Width, Scene.CameraManager.Viewport.Height), bg.Rectangle(Scene.CameraManager.Viewport), Color.White);
+            }
+            Scene.XNAWindow.spriteBatch.End();
+            Scene.XNAWindow.spriteBatch.Begin(transformMatrix: newMatrix, samplerState: SamplerState.PointClamp); // Draw the map
+            _renderer.Draw(newMatrix);
+            Scene.XNAWindow.spriteBatch.End();
+        }
+
+    }
 }

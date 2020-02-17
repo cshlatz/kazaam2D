@@ -15,6 +15,7 @@ namespace Kazaam.Components {
             Effects = flip ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
             Scale = scale;
             DisplayOrder = displayOrder;
+            DisplayTint = Color.White;
         }
     }
 }
