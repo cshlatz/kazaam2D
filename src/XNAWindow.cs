@@ -4,13 +4,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 using System.Collections;
 
-
 /// <summary>
 /// Kazaam.Display is a group of classes that provide access to graphical displays and windows.
 /// </summary>
-namespace Kazaam.Display
-{
-
+namespace Kazaam.Display {
     /// <summary>
     /// A window that displays graphics to the user.
     /// </summary>
@@ -27,6 +24,12 @@ namespace Kazaam.Display
         public int VirtualWidth {get; private set;}
         public int VirtualHeight {get; private set;}
 
+        public GameWindow Window {
+            get {
+                return game.Window;
+            }
+        }
+
         public Vector2 ResolutionScale {
             get {
                 return new Vector2((float)graphics.GraphicsDevice.Viewport.Width / (float)VirtualWidth, (float)graphics.GraphicsDevice.Viewport.Width / (float)VirtualWidth);
@@ -34,52 +37,53 @@ namespace Kazaam.Display
         }
 
         public XNAWindow(Game game) {
-          this.game = game;
-          createGraphics(false);
-          sprites = new ArrayList();
-          spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
+            this.game = game;
+            createGraphics(false);
+            sprites = new ArrayList();
+            spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
         }
 
-        public GraphicsDeviceManager Window() {
-          return graphics;
+        public GraphicsDeviceManager Graphics() {
+            return graphics;
         }
 
         /// <summary>
         /// Changes the resolution of the game window.
         /// </summary>
         public void Resolution(int x, int y) {
-          XResolution = x;
-          YResolution = y;
-          Window().PreferredBackBufferWidth = XResolution;
-          Window().PreferredBackBufferHeight = YResolution;
-          Window().ApplyChanges();
+            XResolution = x;
+            YResolution = y;
+            Graphics().PreferredBackBufferWidth = XResolution;
+            Graphics().PreferredBackBufferHeight = YResolution;
+            Graphics().ApplyChanges();
         }
 
         /// <summary>
         /// Changes the virtual resolution of the game window.
         /// </summary>
         public void VirtualResolution(int x, int y) {
-          VirtualWidth = x;
-          VirtualHeight = y;
+            VirtualWidth = x;
+            VirtualHeight = y;
         }
 
         /// <summary>
         /// Toggles fullscreen on and off.
         /// </summary>
         public void ToggleFullscreen() {
-          graphics.IsFullScreen = !graphics.IsFullScreen;
-          graphics.ApplyChanges();
+            graphics.IsFullScreen = !graphics.IsFullScreen;
+            graphics.ApplyChanges();
         }
 
         /// <summary>
         /// Internal method to create the graphics device.
         /// </summary>
         private void createGraphics(bool fullscreen) {
-          graphics = new GraphicsDeviceManager(game);
-          graphics.PreferMultiSampling = false;
-          graphics.SynchronizeWithVerticalRetrace = true;
-          graphics.IsFullScreen = fullscreen;
-          graphics.ApplyChanges();
+            graphics = new GraphicsDeviceManager(game);
+            graphics.PreferMultiSampling = false;
+            graphics.SynchronizeWithVerticalRetrace = true;
+            graphics.IsFullScreen = fullscreen;
+            graphics.GraphicsProfile = GraphicsProfile.HiDef;
+            graphics.ApplyChanges();
         }
     }
 }

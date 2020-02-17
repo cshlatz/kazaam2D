@@ -1,8 +1,6 @@
-﻿using Kazaam.Assets;
-using Kazaam.Display;
+﻿using Kazaam.Display;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using System;
 
 namespace Kazaam {
@@ -10,81 +8,48 @@ namespace Kazaam {
     /// The main game engine class that handles the game loop, physics updates and rendering.
     /// </summary>
     public class XNAGame : Game {
-      private Stack<GameState> _states;
+        public Scene Scene { get; set; }
+        public XNAWindow GameWindow { get; set; }
 
-      public Stack<GameState> States {
-        get {
-            return _states;
+        public GraphicsDevice Graphics {
+            get {
+                return GraphicsDevice;
+            }
         }
-      }
 
-      public Scene scene;
-      public AssetLoader jsonLoader;
-      public ContentLoader contentLoader;
-
-      public XNAWindow GameWindow { get; set; }
-
-      public GraphicsDevice Graphics { get {
-        return GraphicsDevice;
-      } }
-
-      public XNAGame () {
-        GameWindow = new XNAWindow(this);
-      }
-
-      protected override void Initialize() {
-        base.Initialize();
-        InitializeEngine();
-        InitializeWorld();
-        InitializeLoaders();
-      }
-
-      public virtual void InitializeEngine() {
-        IsFixedTimeStep = true; // Caps the engine at 60 FPS.
-        _states = new Stack<GameState>();
-        scene = new Scene(this);
-      }
-
-      public virtual void InitializeWorld() {
-        scene.Initialize();
-      }
-
-      public virtual void InitializeLoaders() {
-        // Json Asset loader
-        jsonLoader = new AssetLoader(this, new JsonFileStream());
-        jsonLoader.RegisterType("animations", new AnimationLoader());
-        jsonLoader.RegisterType("ui", new UILoader());
-
-        // XNB Asset loader
-        contentLoader = new ContentLoader(this);
-        contentLoader.RegisterType("maps", new MapLoader());
-        contentLoader.RegisterType("sounds", new SoundLoader());
-        contentLoader.RegisterType("songs", new SongLoader());
-        contentLoader.RegisterType("sprites", new SpriteLoader());
-      }
-
-      protected override void Draw(GameTime gameTime) {
-        base.Draw(gameTime);
-        if (States.Count > 0) {
-            States.Peek().Draw(gameTime);
-        } else {
-            Log("Game State stack is empty in Draw");
+        public XNAGame () {
+            GameWindow = new XNAWindow(this);
         }
-        GraphicsDevice.Clear(Color.Black);
-      }
 
-      protected override void Update(GameTime gameTime) {
-        base.Update(gameTime);
-        if (States.Count > 0) {
-            States.Peek().Update(gameTime);
-        } else {
-            Log("Game State stack is empty in Update");
+        protected override void Initialize() {
+            base.Initialize();
+            IsFixedTimeStep = true; // Caps the engine at 60 FPS.
         }
-      }
 
-      public static void Log(string message) {
-          Console.WriteLine(message);
-      }
+        protected override void Draw(GameTime gameTime) {
+            base.Draw(gameTime);
+            GraphicsDevice.Clear(Color.White);
+            if (Scene.States.Count > 0) {
+                Scene.States.Peek().Draw(gameTime);
+            } else {
+                Log("Game State stack is empty in Draw");
+            }
+        }
+
+        protected override void Update(GameTime gameTime) {
+          base.Update(gameTime);
+          if (Scene.States.Count > 0) {
+              Scene.States.Peek().Update(gameTime);
+          } else {
+              Log("Game State stack is empty in Update");
+          }
+        }
+
+        public static void Log(string message) {
+            #if DEBUG
+            Console.WriteLine(DateTime.Now + ": "  + message);
+            #endif
+        }
     }
 
 }

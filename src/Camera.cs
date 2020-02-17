@@ -7,10 +7,10 @@ using MonoGame.Extended;
 using MonoGame.Extended.ViewportAdapters;
 using System;
 
-namespace Kazaam.View {
+namespace Kazaam {
     public abstract class Camera : ICamera {
         protected readonly OrthographicCamera _internalCamera;
-        protected readonly XNAGame game;
+        protected readonly Scene scene;
 
         private GameObject _cameraFocus;
         private float _zoom;
@@ -60,11 +60,11 @@ namespace Kazaam.View {
             }
         }
 
-        public Camera(XNAGame game) {
-            this.game = game;
-            _viewportWidth = game.Graphics.Viewport.Width;
-            _viewportHeight = game.Graphics.Viewport.Height;
-            var viewportAdapter = new BoxingViewportAdapter(game.Window, game.GraphicsDevice, game.GameWindow.XResolution, game.GameWindow.YResolution);
+        public Camera(Scene scene) {
+            this.scene = scene;
+            _viewportWidth = scene.Graphics.Viewport.Width;
+            _viewportHeight = scene.Graphics.Viewport.Height;
+            var viewportAdapter = new BoxingViewportAdapter(scene.XNAWindow.Window, scene.Graphics, scene.XNAWindow.XResolution, scene.XNAWindow.YResolution);
             _internalCamera = new OrthographicCamera(viewportAdapter);
         }
 
@@ -78,8 +78,8 @@ namespace Kazaam.View {
                        Matrix.CreateScale(
                            new Vector3(Zoom, Zoom, 1)) *
                        Matrix.CreateTranslation(
-                           new Vector3(game.GameWindow.XResolution * 0.5f, game.GameWindow.YResolution * 0.5f, 0)) *
-                       Matrix.CreateScale(new Vector3(game.GameWindow.ResolutionScale.X, game.GameWindow.ResolutionScale.Y, 1.0f));
+                           new Vector3(scene.XNAWindow.XResolution * 0.5f, scene.XNAWindow.YResolution * 0.5f, 0)) *
+                       Matrix.CreateScale(new Vector3(scene.XNAWindow.ResolutionScale.X, scene.XNAWindow.ResolutionScale.Y, 1.0f));
 
             }
         }
@@ -92,7 +92,7 @@ namespace Kazaam.View {
             // If the clamp variables aren't set, literally have the clamp value be unbounded.
             var cameraMax = new Vector2(Int32.MaxValue, Int32.MaxValue);
             if (_clampToMap) {
-                cameraMax = new Vector2(game.scene.Map.Width - (_viewportWidth / Zoom / 2), game.scene.Map.Height - (_viewportHeight / Zoom / 2));
+                cameraMax = new Vector2(scene.Map.Width - (_viewportWidth / Zoom / 2), scene.Map.Height - (_viewportHeight / Zoom / 2));
             }
             if (!_clampToMap && !_clampRange.IsNaN()) {
                 cameraMax = new Vector2(_clampRange.X / Zoom / 2, _clampRange.Y / Zoom / 2);
@@ -104,7 +104,7 @@ namespace Kazaam.View {
 
         public Viewport Viewport {
             get {
-                return game.Graphics.Viewport;
+                return scene.Graphics.Viewport;
             }
         }
 
