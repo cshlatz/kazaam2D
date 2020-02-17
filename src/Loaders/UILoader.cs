@@ -1,7 +1,7 @@
 using Myra.Graphics2D.UI;
 using System.IO;
 
-namespace Kazaam.Assets {
+namespace Kazaam.Loaders {
   public class UILoader : ITypeLoader {
     /// <summary>
     /// Returns a Myra Project from a provided XML file

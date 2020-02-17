@@ -7,7 +7,7 @@ using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
 using System.Collections.Generic;
 
-namespace Kazaam {
+namespace Kazaam.Maps {
     /// <summary>
     /// A representation of the engine world.
     /// </summary>

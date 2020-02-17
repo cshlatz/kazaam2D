@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Kazaam.Components;
 
-namespace Kazaam.View {
+namespace Kazaam.Camera {
     public interface ICamera {
         void Update(GameTime gameTime);
         Matrix View {get;}

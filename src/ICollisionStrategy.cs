@@ -1,4 +1,4 @@
-namespace Kazaam.Physics {
+namespace Kazaam {
     public interface ICollisionStrategy {
         void OnCollision();
     }

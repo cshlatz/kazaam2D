@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using MonoGame.Extended.Entities;
 using MonoGame.Extended.Entities.Systems;
 
-namespace Kazaam.Objects {
+namespace Kazaam.Systems {
     public class PlayerSystem : EntityProcessingSystem {
         private ComponentMapper<Player> _playerMapper;
         private ComponentMapper<GameObject> _gameObjectMapper;

@@ -1,13 +1,11 @@
 ﻿// Copyright Connor R. Shlatz 2019
 // Hitbox.cs
 
-using Kazaam.Enums;
+using Kazaam.Components;
 using Humper;
-using Humper.Responses;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
-namespace Kazaam.Components {
+namespace Kazaam {
     public enum HitboxType {
         Hitbox,
         Hurtbox,
@@ -86,7 +84,7 @@ namespace Kazaam.Components {
         /// <summary>
         /// Adds a humper tag for collision response
         /// </summary>
-        public void AddTag(Kazaam.Enums.Tags tag) {
+        public void AddTag(Kazaam.Tags tag) {
             Bounds.AddTags(tag);
         }
     }

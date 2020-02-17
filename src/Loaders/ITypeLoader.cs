@@ -1,7 +1,6 @@
 using System.IO;
 
-namespace Kazaam.Assets {
-
+namespace Kazaam.Loaders {
   /// <summary>
   /// A loader that can create specific Kazaam object types from a Stream.
   /// </summary>

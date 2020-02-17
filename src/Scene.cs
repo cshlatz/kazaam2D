@@ -1,10 +1,8 @@
 using HumperWorld = Humper.World;
-using Kazaam.Assets;
-using Kazaam.Display;
-using Kazaam.Objects;
-using Kazaam.Universe;
+using Kazaam.Camera;
+using Kazaam.Loaders;
+using Kazaam.Maps;
 using Kazaam.Systems;
-using Kazaam.View;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,7 +10,6 @@ using Microsoft.Xna.Framework.Media;
 using MonoGame.Extended.Entities;
 using SceneWorld = MonoGame.Extended.Entities.World;
 using System.Collections.Generic;
-using Kazaam.System;
 
 namespace Kazaam {
     /// <summary>

@@ -1,7 +1,7 @@
+using Kazaam.Loaders;
 using System.IO;
 
-namespace Kazaam.Assets {
-  
+namespace Kazaam {
   /// <summary>
   /// A stream for files in the JSON file format.
   /// </summary>

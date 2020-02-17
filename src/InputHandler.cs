@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Input;
 
 using System.Collections.Generic;
 
-namespace Kazaam.Input {
+namespace Kazaam {
 
     public class InputAction {
         public string ActionName { get; set; }

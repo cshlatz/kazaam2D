@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 
-namespace Kazaam.Assets {
+namespace Kazaam.Loaders {
     /// <summary>
     /// A collection of IContentLoader implementations that can load individual assets to the engine that have been built with the monogame pipeline.
     /// </summary>

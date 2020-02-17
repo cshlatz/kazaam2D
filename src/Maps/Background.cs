@@ -1,10 +1,9 @@
-using Kazaam.Assets;
+using Kazaam.Graphics;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Kazaam.Display {
-
+namespace Kazaam.Maps {
     public class Background {
         public Sprite Texture { get; private set; }
         public Vector2 Offset { get; private set; }

@@ -4,7 +4,7 @@ using System.Linq;
 
 using Microsoft.Xna.Framework;
 
-namespace Kazaam.Animate {
+namespace Kazaam.Animations {
   public class Animation {
     List<AnimationFrame> frames = new List<AnimationFrame>();
     TimeSpan Duration {

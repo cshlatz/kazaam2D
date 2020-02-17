@@ -1,6 +1,6 @@
 ﻿using Kazaam.Components;
 
-namespace Kazaam.System{
+namespace Kazaam {
     public interface IEntity {
         GameObject GameObject {get; set;}
         int Id { get; }

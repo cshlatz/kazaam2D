@@ -7,7 +7,7 @@ using System.Collections;
 /// <summary>
 /// Kazaam.Display is a group of classes that provide access to graphical displays and windows.
 /// </summary>
-namespace Kazaam.Display {
+namespace Kazaam {
     /// <summary>
     /// A window that displays graphics to the user.
     /// </summary>

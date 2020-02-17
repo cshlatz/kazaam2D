@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Kazaam.Objects {
+namespace Kazaam {
 
   /// <summary>
   /// An object or texture that is drawable to the Window.

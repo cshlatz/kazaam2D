@@ -1,6 +1,6 @@
 using Kazaam.Components;
 
-namespace Kazaam.System {
+namespace Kazaam {
 
   /// <summary>
   /// A representation of the current state of an object, such as an idle object or a walking object.

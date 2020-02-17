@@ -1,4 +1,4 @@
-namespace Kazaam.Objects {
+namespace Kazaam {
   /// <summary>
   /// An object that is effected by physical forces.
   /// </summary>

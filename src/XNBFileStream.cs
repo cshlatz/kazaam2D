@@ -1,6 +1,7 @@
+using Kazaam.Loaders;
 using System.IO;
 
-namespace Kazaam.Assets {
+namespace Kazaam {
   
   /// <summary>
   /// An implementation of IAssetStreamProvider for files built with the MonoGame Pipeline Tool.
