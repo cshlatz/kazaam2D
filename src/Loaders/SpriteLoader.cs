@@ -1,7 +1,8 @@
+using Kazaam.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Kazaam.Assets {
+namespace Kazaam.Loaders {
     public class SpriteLoader : IContentLoader {
         public ContentManager Content { get; set; }
         public object Load(string contentPath) {

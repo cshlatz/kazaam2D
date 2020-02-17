@@ -5,7 +5,7 @@
 // Copyright (C) Connor Shlatz. All rights reserved.
 //-----------------------------------------------------------------------------
 
-using Kazaam.Animate;
+using Kazaam.Animations;
 
 using Microsoft.Xna.Framework;
 
@@ -15,7 +15,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace Kazaam.Assets {
+namespace Kazaam.Loaders {
   public class AseSpritesheet {
     [JsonProperty("frames")]
     public List<AseFrames> Frames {get; set;}

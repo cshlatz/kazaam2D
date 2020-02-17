@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Kazaam.Assets {
+namespace Kazaam.Graphics {
   public class Sprite {
     public readonly Texture2D Texture;
 

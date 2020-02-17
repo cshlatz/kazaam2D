@@ -1,13 +1,11 @@
-﻿using Kazaam;
-using Kazaam.Components;
-using Kazaam.View;
+﻿using Kazaam.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
 using MonoGame.Extended.ViewportAdapters;
 using System;
 
-namespace Kazaam {
+namespace Kazaam.Camera {
     public abstract class Camera : ICamera {
         protected readonly OrthographicCamera _internalCamera;
         protected readonly Scene scene;

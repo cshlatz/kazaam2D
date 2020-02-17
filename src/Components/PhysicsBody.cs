@@ -1,4 +1,3 @@
-using Kazaam.Physics;
 using Microsoft.Xna.Framework;
 
 namespace Kazaam.Components {

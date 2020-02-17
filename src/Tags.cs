@@ -1,4 +1,4 @@
-namespace Kazaam.Enums {
+namespace Kazaam {
   public enum Tags {
     Creatures = 1 << 0,
     Platforms = 1 << 1,

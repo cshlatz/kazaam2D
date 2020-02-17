@@ -1,7 +1,7 @@
 ﻿using Kazaam.Components;
 using Microsoft.Xna.Framework;
 
-namespace Kazaam.Physics {
+namespace Kazaam {
     /// <summary>
     /// Enforces a pattern strategy design pattern for processing physics
     /// </summary>

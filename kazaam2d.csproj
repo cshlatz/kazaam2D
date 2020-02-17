@@ -28,10 +28,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="src\" />
-    <Folder Include="src\Animation\" />
+    <Folder Include="src\Animations\" />
+    <Folder Include="src\Audio\" />
     <Folder Include="src\Camera\" />
     <Folder Include="src\Components\" />
+    <Folder Include="src\Graphics\" />
     <Folder Include="src\Loaders\" />
+    <Folder Include="src\Maps\" />
     <Folder Include="src\Systems\" />
   </ItemGroup>
   <ItemGroup>
@@ -83,11 +86,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\Animation\Animation.cs" />
-    <Compile Include="src\Animation\AnimationFrame.cs" />
-    <Compile Include="src\Background.cs" />
-    <Compile Include="src\Camera.cs" />
-    <Compile Include="src\CameraManager.cs" />
+    <Compile Include="src\Animations\Animation.cs" />
+    <Compile Include="src\Animations\AnimationFrame.cs" />
     <Compile Include="src\Components\Animator.cs" />
     <Compile Include="src\Components\Collider.cs" />
     <Compile Include="src\Components\GameObject.cs" />
@@ -105,8 +105,6 @@
     <Compile Include="src\GameState.cs" />
     <Compile Include="src\IPhysicsStrategy.cs" />
     <Compile Include="src\IPlayer.cs" />
-    <Compile Include="src\ISound.cs" />
-    <Compile Include="src\ITiledStrategy.cs" />
     <Compile Include="src\InputHandler.cs" />
     <Compile Include="src\JsonFileStream.cs" />
     <Compile Include="src\Loaders\AnimationLoader.cs" />
@@ -119,13 +117,9 @@
     <Compile Include="src\Loaders\SoundLoader.cs" />
     <Compile Include="src\Loaders\SpriteLoader.cs" />
     <Compile Include="src\Loaders\UILoader.cs" />
-    <Compile Include="src\Map.cs" />
-    <Compile Include="src\Music.cs" />
     <Compile Include="src\Namespaces.cs" />
     <Compile Include="src\ObjectState.cs" />
     <Compile Include="src\Scene.cs" />
-    <Compile Include="src\SoundManager.cs" />
-    <Compile Include="src\Sprite.cs" />
     <Compile Include="src\Systems\PhysicsSystem.cs" />
     <Compile Include="src\Systems\PlayerSystem.cs" />
     <Compile Include="src\Systems\RenderSystem.cs" />
@@ -133,6 +127,15 @@
     <Compile Include="src\XNAGame.cs" />
     <Compile Include="src\XNAWindow.cs" />
     <Compile Include="src\XNBFileStream.cs" />
+    <Compile Include="src\Audio\Music.cs" />
+    <Compile Include="src\Audio\ISound.cs" />
+    <Compile Include="src\Audio\SoundManager.cs" />
+    <Compile Include="src\Camera\Camera.cs" />
+    <Compile Include="src\Camera\CameraManager.cs" />
+    <Compile Include="src\Graphics\Sprite.cs" />
+    <Compile Include="src\Maps\Background.cs" />
+    <Compile Include="src\Maps\Map.cs" />
+    <Compile Include="src\Maps\ITiledStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

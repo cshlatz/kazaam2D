@@ -1,9 +1,9 @@
-using Kazaam.Assets;
+using Kazaam.Loaders;
 
 using Myra;
 using Myra.Graphics2D.UI;
 
-namespace Kazaam.Display {
+namespace Kazaam {
   public class Gui {
     private Project project;
     private Grid grid;

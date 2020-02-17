@@ -1,4 +1,4 @@
-namespace Kazaam {
+namespace Kazaam.Maps {
     /// <summary>
     /// Enforces a pattern strategy design pattern for loading Tiled map objects
     /// </summary>

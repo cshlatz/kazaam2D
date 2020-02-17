@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using Microsoft.Xna.Framework.Content;
 
-namespace Kazaam.Assets {
+namespace Kazaam.Loaders {
 
     /// <summary>
     /// An interface for dedicated streams meant to load a file into a specific Kazaam object type.

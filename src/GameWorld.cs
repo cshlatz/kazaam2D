@@ -1,7 +1,7 @@
 ﻿using Kazaam.Components;
 using Humper;
 
-namespace Kazaam.System {
+namespace Kazaam {
     public class GameWorld {
         World World { get; set; }
 

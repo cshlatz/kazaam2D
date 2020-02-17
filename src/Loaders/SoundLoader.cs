@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 
-namespace Kazaam.Assets {
+namespace Kazaam.Loaders {
     public class SoundLoader : IContentLoader {
         public ContentManager Content { get; set; }
         public object Load(string contentPath) {

@@ -1,4 +1,4 @@
-using Kazaam.Assets;
+using Kazaam.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

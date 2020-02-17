@@ -1,4 +1,4 @@
-﻿using Kazaam.Animate;
+﻿using Kazaam.Animations;
 using System.Collections.Generic;
 namespace Kazaam.Components {
     public class Animator : IComponent {

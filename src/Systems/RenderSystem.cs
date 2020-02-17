@@ -1,13 +1,13 @@
 using System;
 using Kazaam.Components;
-using Kazaam.Display;
+using Kazaam.Maps;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using MonoGame.Extended.Entities;
 using MonoGame.Extended.Entities.Systems;
 
-namespace Kazaam.View {
+namespace Kazaam.Systems {
     public class RenderSystem : EntityDrawSystem {
         private readonly Scene _scene;
 

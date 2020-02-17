@@ -1,7 +1,9 @@
-using Microsoft.Xna.Framework.Content;
 using Kazaam;
+using Kazaam.Maps;
+using Microsoft.Xna.Framework.Content;
 using MonoGame.Extended.Tiled;
-namespace Kazaam.Assets {
+
+namespace Kazaam.Loaders {
     /// <summary>
     /// A loader that creates Map objects from Tiled map files.
     /// </summary>
