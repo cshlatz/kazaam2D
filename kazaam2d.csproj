@@ -41,48 +41,55 @@
     <Reference Include="mscorlib" />
     <Reference Include="System.Xml" />
     <Reference Include="Comora">
-      <HintPath>..\packages\Comora.0.5.0\lib\portable-net45+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Comora.dll</HintPath>
+      <HintPath>.\packages\Comora.0.5.0\lib\portable-net45+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Comora.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Humper">
-      <HintPath>..\packages\Humper.0.5.8\lib\portable-net45+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Humper.dll</HintPath>
+      <HintPath>.\packages\Humper.0.5.8\lib\portable-net45+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Humper.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework.Content.Pipeline">
-      <HintPath>..\packages\MonoGame.Framework.Content.Pipeline.Portable.3.7.1.189\lib\portable-net45+win8+wpa81\MonoGame.Framework.Content.Pipeline.dll</HintPath>
+      <HintPath>.\packages\MonoGame.Framework.Content.Pipeline.Portable.3.7.1.189\lib\portable-net45+win8+wpa81\MonoGame.Framework.Content.Pipeline.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.Content.Pipeline">
-      <HintPath>..\packages\MonoGame.Extended.Content.Pipeline.3.6.0-beta0001\lib\netstandard2.0\MonoGame.Extended.Content.Pipeline.dll</HintPath>
+      <HintPath>.\packages\MonoGame.Extended.Content.Pipeline.3.6.0-beta0001\lib\netstandard2.0\MonoGame.Extended.Content.Pipeline.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework">
-      <HintPath>..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\lib\net45\MonoGame.Framework.dll</HintPath>
+      <HintPath>.\packages\MonoGame.Framework.DesktopGL.3.7.1.189\lib\net45\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended">
-      <HintPath>..\packages\MonoGame.Extended.3.7.0\lib\netstandard2.0\MonoGame.Extended.dll</HintPath>
+      <HintPath>.\packages\MonoGame.Extended.3.7.0\lib\netstandard2.0\MonoGame.Extended.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.Animations">
-      <HintPath>..\packages\MonoGame.Extended.Animations.3.7.0\lib\netstandard2.0\MonoGame.Extended.Animations.dll</HintPath>
+      <HintPath>.\packages\MonoGame.Extended.Animations.3.7.0\lib\netstandard2.0\MonoGame.Extended.Animations.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.Entities">
-      <HintPath>..\packages\MonoGame.Extended.Entities.3.7.0\lib\netstandard2.0\MonoGame.Extended.Entities.dll</HintPath>
+      <HintPath>.\packages\MonoGame.Extended.Entities.3.7.0\lib\netstandard2.0\MonoGame.Extended.Entities.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.Graphics">
-      <HintPath>..\packages\MonoGame.Extended.Graphics.3.7.0\lib\netstandard2.0\MonoGame.Extended.Graphics.dll</HintPath>
+      <HintPath>.\packages\MonoGame.Extended.Graphics.3.7.0\lib\netstandard2.0\MonoGame.Extended.Graphics.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.Particles">
-      <HintPath>..\packages\MonoGame.Extended.Particles.3.7.0\lib\netstandard2.0\MonoGame.Extended.Particles.dll</HintPath>
+      <HintPath>.\packages\MonoGame.Extended.Particles.3.7.0\lib\netstandard2.0\MonoGame.Extended.Particles.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.Tiled">
-      <HintPath>..\packages\MonoGame.Extended.Tiled.3.7.0\lib\netstandard2.0\MonoGame.Extended.Tiled.dll</HintPath>
+      <HintPath>.\packages\MonoGame.Extended.Tiled.3.7.0\lib\netstandard2.0\MonoGame.Extended.Tiled.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended.Input">
-      <HintPath>..\packages\MonoGame.Extended.Input.3.7.0\lib\netstandard2.0\MonoGame.Extended.Input.dll</HintPath>
+      <HintPath>.\packages\MonoGame.Extended.Input.3.7.0\lib\netstandard2.0\MonoGame.Extended.Input.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="info.lundin.math">
+      <HintPath>packages\info.lundin.math.dll.1.2.6\lib\net40\info.lundin.math.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="XNAssets">
+      <HintPath>packages\XNAssets.0.5.0.6\lib\net45\XNAssets.dll</HintPath>
+    </Reference>
     <Reference Include="Myra">
-      <HintPath>..\..\..\Projects\kazaam\packages\Myra.0.9.4.180\lib\net45\Myra.dll</HintPath>
+      <HintPath>packages\Myra.0.9.9.200\lib\net45\Myra.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -141,5 +148,5 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets" Condition="Exists('..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets')" />
+  <Import Project=".\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets" Condition="Exists('.\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets')" />
 </Project>
