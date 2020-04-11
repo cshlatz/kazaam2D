@@ -15,5 +15,8 @@ Kazaam2D relies on the following packages. All packages should be available on n
 - JSON.net (https://www.newtonsoft.com/json)
 - Humper (https://github.com/dotnet-ad/Humper) - Collision detection library
 
+# Installation
+All of Kazaam2D's required dependencies can be downloaded through official nuget repositories. It's recommended that these packages are restored to the base kazaam folder and installed through Visual Studio/MonoDevelop.
+
 # License
 Kazaam2D is licensed under MPL 2.0 or any later version. Full terms of the license can be found at https://www.mozilla.org/en-US/MPL/2.0/
