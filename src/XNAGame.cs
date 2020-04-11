@@ -29,20 +29,30 @@ namespace Kazaam {
         protected override void Draw(GameTime gameTime) {
             base.Draw(gameTime);
             GraphicsDevice.Clear(Color.White);
-            if (Scene.States.Count > 0) {
-                Scene.States.Peek().Draw(gameTime);
-            } else {
-                Log("Game State stack is empty in Draw");
+            try {
+                if (Scene.States.Count > 0) {
+                    Scene.States.Peek().Draw(gameTime);
+                } else {
+                    Log("Game State stack is empty in Draw");
+                }
+            } catch (NullReferenceException e) {
+                Log("No Scene loaded");
+                throw new NullReferenceException(e.ToString());
             }
         }
 
         protected override void Update(GameTime gameTime) {
-          base.Update(gameTime);
-          if (Scene.States.Count > 0) {
-              Scene.States.Peek().Update(gameTime);
-          } else {
-              Log("Game State stack is empty in Update");
-          }
+            base.Update(gameTime);
+            try {
+                if (Scene.States.Count > 0) {
+                    Scene.States.Peek().Update(gameTime);
+                } else {
+                    Log("Game State stack is empty in Update");
+                }
+            } catch (NullReferenceException e) {
+                Log("No Scene loaded");
+                throw new NullReferenceException(e.ToString());
+            }
         }
 
         public static void Log(string message) {
@@ -51,5 +61,4 @@ namespace Kazaam {
             #endif
         }
     }
-
 }
