@@ -102,6 +102,8 @@
     <Compile Include="src\Components\PhysicsBody.cs" />
     <Compile Include="src\Components\Player.cs" />
     <Compile Include="src\Components\Renderer.cs" />
+    <Compile Include="src\XNAConsole.cs" />
+    <Compile Include="src\ConsoleState.cs" />
     <Compile Include="src\GameWorld.cs" />
     <Compile Include="src\Gui.cs" />
     <Compile Include="src\Hitbox.cs" />
