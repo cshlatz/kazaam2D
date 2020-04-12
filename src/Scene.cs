@@ -113,6 +113,7 @@ namespace Kazaam {
         public Scene(XNAGame game) {
             this.Game = game;
             Content = game.Content;
+            Initialize();
         }
 
         /// <summary>
