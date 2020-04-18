@@ -12,9 +12,13 @@ namespace Kazaam {
         }
 
         public override void Update(GameTime gameTime) {
-            KeyboardState kb = Keyboard.GetState();
+            var kb = Keyboard.GetState();
+            var keys = kb.GetPressedKeys();
             if (kb.IsKeyDown(Keys.OemTilde)) {
                 Game.Scene.States.Pop();
+            }
+            if (keys.Length > 0) {
+                console.Insert(keys[0].ToString());
             }
         }
 
