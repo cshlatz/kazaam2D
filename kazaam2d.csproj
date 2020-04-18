@@ -78,14 +78,10 @@
       <HintPath>.\packages\MonoGame.Extended.Input.3.7.0\lib\netstandard2.0\MonoGame.Extended.Input.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="info.lundin.math">
-      <HintPath>packages\info.lundin.math.dll.1.2.6\lib\net40\info.lundin.math.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="XNAssets">
-      <HintPath>packages\XNAssets.0.5.0.6\lib\net45\XNAssets.dll</HintPath>
     </Reference>
     <Reference Include="Myra">
       <HintPath>packages\Myra.0.9.9.200\lib\net45\Myra.dll</HintPath>
