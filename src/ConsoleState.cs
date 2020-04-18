@@ -18,7 +18,7 @@ namespace Kazaam {
                 Game.Scene.States.Pop();
             }
             if (keys.Length > 0) {
-                console.Insert(keys[0].ToString());
+                console.HandleKeyPress(keys[0]);
             }
         }
 

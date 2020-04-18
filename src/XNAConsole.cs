@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 
 using System.Collections.Generic;
@@ -66,9 +67,28 @@ namespace Kazaam {
             }
         }
 
+        public void HandleKeyPress(Keys key) {
+            switch (key) {
+                case Keys.Back:
+                    Delete();
+                    break;
+                default:
+                    Insert(key.ToString());
+                    break;
+            }
+        }
+
         public void Insert(string charValue) {
             string current = buffer.Pop();
             current = current + charValue;
+            buffer.Push(current);
+        }
+
+        public void Delete() {
+            string current = buffer.Pop();
+            if (current.Length > 0) {
+                current = current.Substring(0, current.Length - 1);
+            }
             buffer.Push(current);
         }
     }
