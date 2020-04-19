@@ -1,0 +1,6 @@
+<Project>
+  <Grid Height="300" >
+       <TextBox Multiline="True" TextColor="#000000FF" TextVerticalAlignment="Bottom" Height="280" VerticalAlignment="Stretch" Background="#87CEEBFF" Id="console-history" />
+       <TextBox TextColor="#000000FF" TextVerticalAlignment="Bottom" ClipToBounds="False" Height="20" VerticalAlignment="Bottom" Background="#FFFFFFFF" Id="console-input" />
+  </Grid>
+</Project>
