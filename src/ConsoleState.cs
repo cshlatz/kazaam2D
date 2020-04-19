@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace Kazaam {
     public class ConsoleState : GameState {
@@ -11,7 +12,10 @@ namespace Kazaam {
         }
 
         public override void Update(GameTime gameTime) {
-
+            KeyboardState kb = Keyboard.GetState();
+            if (kb.IsKeyDown(Keys.OemTilde)) {
+                game.Scene.States.Pop();
+            }
         }
 
         public override void Draw(GameTime gameTime) {
