@@ -36,6 +36,8 @@
     <Folder Include="src\Loaders\" />
     <Folder Include="src\Maps\" />
     <Folder Include="src\Systems\" />
+    <Folder Include="res\" />
+    <Folder Include="res\gui\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -78,14 +80,17 @@
       <HintPath>.\packages\MonoGame.Extended.Input.3.7.0\lib\netstandard2.0\MonoGame.Extended.Input.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="Myra">
+      <HintPath>.\packages\Myra.0.9.9.200\lib\net45\Myra.dll</HintPath>
+    </Reference>
+    <Reference Include="info.lundin.math">
+      <HintPath>..\..\projects\fighter\packages\info.lundin.math.dll.1.2.6\lib\net40\info.lundin.math.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\projects\fighter\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="XNAssets">
-    </Reference>
-    <Reference Include="Myra">
-      <HintPath>packages\Myra.0.9.9.200\lib\net45\Myra.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\projects\fighter\packages\XNAssets.0.5.0.6\lib\net45\XNAssets.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +103,7 @@
     <Compile Include="src\Components\PhysicsBody.cs" />
     <Compile Include="src\Components\Player.cs" />
     <Compile Include="src\Components\Renderer.cs" />
+    <Compile Include="src\ConsoleState.cs" />
     <Compile Include="src\GameWorld.cs" />
     <Compile Include="src\Gui.cs" />
     <Compile Include="src\Hitbox.cs" />
@@ -127,6 +133,7 @@
     <Compile Include="src\Systems\PlayerSystem.cs" />
     <Compile Include="src\Systems\RenderSystem.cs" />
     <Compile Include="src\Tags.cs" />
+    <Compile Include="src\XNAConsole.cs" />
     <Compile Include="src\XNAGame.cs" />
     <Compile Include="src\XNAWindow.cs" />
     <Compile Include="src\XNBFileStream.cs" />
@@ -142,6 +149,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="res\gui\xnaconsole.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project=".\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets" Condition="Exists('.\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets')" />

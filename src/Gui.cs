@@ -57,5 +57,9 @@ namespace Kazaam {
         Project = (Project)loader.LoadAsset(type, name);
     }
 
+    public void LoadFromXML(string xml) {
+        Project = Project.LoadFromXml(xml);
+    }
+
   }
 }
